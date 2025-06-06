@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KWETU Partners - FMCG SaaS Solutions</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+</head>
+<body>
+
+  <!-- Header / Hero Section -->
+  <section class="header">
+    <nav>
+      <a href="index.html">
+        <img src="logo.png" alt="KWETU Logo">
+      </a>
+      <i class="fa fa-bars"></i>
+      <div class="nav-links" id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about us.html">ABOUT</a></li>
+          <li><a href="our products.html">PRODUCTS</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="login.html">LOGIN</a></li>
+        </ul>
+        </div>
+           <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="text-box">
+      <h1>Digital Tools for FMCG Growth</h1>
+      <p class="white-text">KWETU Partners delivers SaaS solutions that simplify Sales, Inventory, and Marketing for Africa’s fast-moving businesses.</p>
+      <a href="our products.html" class="hero-btn">Explore Our Products</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>What We Offer</h2>
+    <div class="row">
+      <div class="feature-col">
+        <i class="fa fa-box"></i>
+        <h3>Smart Inventory</h3>
+        <p class="white-text">Real-time stock management with alerts and dashboards.</p>
+      </div>
+      <div class="feature-col">
+        <i class="fa fa-truck"></i>
+        <h3>Order Management</h3>
+        <p class="white-text">Streamline order tracking and approvals from field to HQ.</p>
+      </div>
+      <div class="feature-col">
+        <i class="fa fa-bullhorn"></i>
+        <h3>Promotions ROI</h3>
+        <p class="white-text">Measure and optimize trade campaigns with data insights.</p>
+      </div>
+    </div>
+  </section>
+   <script>
+
+        var navLinks= document.getElementById("navLinks");
+        function showMenu(){
+             navLinks.style.right= "0";
+        }
+        function hideMenu(){
+            navLinks.style.right= "-200px";
+        }
+   </script>
+   
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <h2>Join leading FMCG businesses across Africa</h2>
+    <a href="contact.html" class="hero-btn">Contact Us Today</a>
+  </section>
+
+  <!-- Login Form -->
+  <form action="/login" method="POST">
+    <!-- Add your login form fields here -->
+  </form>
+
+  <!-- Sign Up Form -->
+  <form action="/signup" method="POST">
+    <!-- Add your sign up form fields here -->
+  </form>
+
+  <!-- Footer -->
+  <section class="footer">
+    <h4>Contact Us</h4>
+    <p class="white-text">Email: kwetudist@gmail.com | Phone: +254 718 524 470| +254 740 337 272</p>
+    <p class="white-text">© 2025 KWETU Partners Ltd</p>
+  </section>
+
+  
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - KWETU Partners</title>
+  <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+</head>
+<body>
+
+  <!-- Header -->
+  <section class="sub-header">
+    <nav>
+        <img src="logo.png" alt="KWETU Logo">
+      </a>
+      <i class="fa fa-bars"></i>
+      <div class="nav-links" id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about us.html">ABOUT</a></li>
+          <li><a href="our products.html">PRODUCTS</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="login.html">LOGIN</a></li>
+        </ul>
+        </div>
+           <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <h1>About KWETU Partners</h1>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-us">
+    <div class="row">
+      <div class="about-col">
+        <h2>We are Africa’s Smart FMCG Platform</h2>
+        <p class="white-text">KWETU Partners Ltd empowers manufacturers and distributors in Africa with tailored SaaS solutions for sales, inventory, and trade marketing. We are a team of developers, marketers, and FMCG experts focused on making field execution data-driven and smarter.</p>
+        <a href="#" class="hero-btn red-btn">Learn More</a>
+      </div>
+      <div class="about-col">
+        <img src="msa.png.jpg" alt="KWETU Partners Team">
+      </div>
+    </div>
+  </section>
+  <!-------JavaScript For Toggle Menu-->
+     <script>
+
+        var navLinks= document.getElementById("navLinks");
+         function showMenu(){
+             navLinks.style.right= "0";
+        }
+        function hideMenu(){
+            navLinks.style.right= "-200px";
+        }
+   </script>
+   
+
+
+  <!-- Footer -->
+  <section class="footer">
+    <h4>Contact Us</h4>
+    <p class="white-text">Email: kwetudist@gmail.com | Phone: +254 718 524 470 | +254 740 337 272</p>
+    <div class="icons">
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin-in"></i>
+    </div>
+    <p class="white-text">© 2025 KWETU Partners Ltd</p>
+  </section>
+
+  
+</body>
+</html>

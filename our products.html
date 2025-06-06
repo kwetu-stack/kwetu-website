@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Products - KWETU Partners</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+</head>
+<body>
+
+  <!-- Header -->
+  <section class="sub-header">
+    <nav>
+      <img src="logo.png" alt="KWETU Logo" />
+
+      <div class="nav-links" id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about us.html">ABOUT</a></li>
+          <li><a href="our products.html">PRODUCTS</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="login.html">LOGIN</a></li>
+        </ul>
+      </div>
+
+      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <h1>Our SaaS Products</h1>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="products">
+    <div class="row">
+      <div class="product-card">
+        <img src="techlab.png.jpg" alt="Inventory System">
+        <h3>Smart Inventory System</h3>
+        <p class="white-text">Track stock levels, reorders, and real-time stock alerts. Built for FMCG efficiency.</p>
+      </div>
+      <div class="product-card">
+        <img src="office.png.jpg" alt="Order System">
+        <h3>Order Management System</h3>
+        <p class="white-text">End-to-end order flow, approvals, and reporting to streamline your sales process.</p>
+      </div>
+      <div class="product-card">
+        <img src="digital.jpg" alt="Promotions Tool">
+        <h3>Promotions ROI Tool</h3>
+        <p class="white-text">Plan, track, and measure trade marketing returns. Data-backed insights, made simple.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="footer">
+    <h4>Contact Us</h4>
+    <p class="white-text">Email: kwetudist@gmail.com | Phone: +254 718 524 470 | +254 740 337 272</p>
+    <p class="white-text">© 2025 KWETU Partners Ltd</p>
+  </section>
+
+  <!-- JavaScript for Mobile Menu -->
+  <script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }
+  </script>
+
+</body>
+</html>
