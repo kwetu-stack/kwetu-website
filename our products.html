@@ -1,74 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Products - KWETU Partners</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Products — Kwetu Partners Ltd</title>
+  <meta name="description" content="Explore our 11 business management software products, purpose-built for African SMEs." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+
+  <!-- Inline add-ons to ensure full functionality even if style.css isn't updated -->
+  <style>
+    /* Mobile nav */
+    .hamburger{display:none;background:transparent;border:none;cursor:pointer;padding:.4rem;margin-left:.4rem}
+    .hamburger span{display:block;width:26px;height:3px;background:#fff;border-radius:2px;margin:5px 0;transition:transform .2s,opacity .2s}
+    .hamburger.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .hamburger.is-open span:nth-child(2){opacity:0}
+    .hamburger.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .mobile-menu{display:grid;gap:.6rem;padding:.8rem .9rem 1rem;background:linear-gradient(90deg,#4F46E5,#7C3AED)}
+    .mobile-menu a{color:#fff;text-decoration:none;padding:.55rem .7rem;border-radius:10px}
+    .mobile-menu a.btn{background:#fff;color:#4F46E5;text-align:center}
+    @media (max-width:820px){.menu{display:none}.hamburger{display:block}}
+
+    /* Minor helpers (if grid/classes not present in style.css) */
+    .section{padding:3rem 0}
+    .section--alt{background:#F3F4F6}
+    .container{width:min(1150px,92%);margin:auto}
+    .grid{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr)}
+    .card{background:#fff;border-radius:16px;padding:1rem;border:1px solid #eef0f4;box-shadow:0 8px 24px rgba(2,8,23,.06)}
+    .card__icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;color:#fff;background:linear-gradient(135deg,#4F46E5,#7C3AED);box-shadow:0 6px 18px rgba(99,102,241,.25)}
+    .mtop{margin-top:1rem}
+    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
+  <!-- Header with desktop + mobile nav -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html">
+        <img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/>
+        <span class="brand__name">Kwetu Partners Ltd</span>
+      </a>
 
-  <!-- Header -->
-  <section class="sub-header">
-    <nav>
-      <img src="logo.png" alt="KWETU Logo" />
+      <!-- Desktop menu -->
+      <nav class="menu">
+        <a href="our products.html" class="active">Solutions</a>
+        <a href="about us.html">About Us</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
+        <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+      </nav>
 
-      <div class="nav-links" id="navLinks">
-        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="about us.html">ABOUT</a></li>
-          <li><a href="our products.html">PRODUCTS</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-          <li><a href="login.html">LOGIN</a></li>
-        </ul>
-      </div>
+      <!-- Mobile hamburger -->
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    <!-- Mobile drawer -->
+    <nav id="mobileMenu" class="mobile-menu" hidden>
+      <a href="our products.html" class="active">Solutions</a>
+      <a href="about us.html">About Us</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
     </nav>
+  </header>
 
-    <h1>Our SaaS Products</h1>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1>Our Products</h1>
+        <p>We’ve built 11 industry-specific management systems for SMEs across Africa. Each product is designed for fast deployment, ease of use, and measurable results.</p>
+        <div class="hero__cta">
+          <a href="contact.html#book" class="btn btn--lg">Book a Demo</a>
+        </div>
+      </div>
+      <div class="hero__art">
+        <img src="techlab.png" alt="Products Overview"/>
+      </div>
+    </div>
+    <div class="hero__wave" aria-hidden="true"></div>
   </section>
 
-  <!-- Products Grid -->
-  <section class="products">
-    <div class="row">
-      <div class="product-card">
-        <img src="techlab.png.jpg" alt="Inventory System">
-        <h3>Smart Inventory System</h3>
-        <p class="white-text">Track stock levels, reorders, and real-time stock alerts. Built for FMCG efficiency.</p>
-      </div>
-      <div class="product-card">
-        <img src="office.png.jpg" alt="Order System">
-        <h3>Order Management System</h3>
-        <p class="white-text">End-to-end order flow, approvals, and reporting to streamline your sales process.</p>
-      </div>
-      <div class="product-card">
-        <img src="digital.jpg" alt="Promotions Tool">
-        <h3>Promotions ROI Tool</h3>
-        <p class="white-text">Plan, track, and measure trade marketing returns. Data-backed insights, made simple.</p>
+  <!-- Products list with ANCHOR IDs -->
+  <section class="section">
+    <div class="container">
+      <div class="grid">
+        <article class="card" id="Inventa">
+          <div class="card__icon">📄</div>
+          <h3>Inventa</h3>
+          <p>Invoicing &amp; Inventory System. Generate invoices quickly, track stock in real time, and export reports.</p>
+          <ul><li>Quick invoices</li><li>Stock management</li><li>Sales reporting</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="Inventa-X">
+          <div class="card__icon">🧾</div>
+          <h3>Inventa-X</h3>
+          <p>Multi-tenant POS &amp; Inventory for businesses with multiple branches or clients.</p>
+          <ul><li>Multi-branch support</li><li>Role-based access</li><li>Analytics dashboard</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="Academix">
+          <div class="card__icon">🎓</div>
+          <h3>Academix</h3>
+          <p>School &amp; Institution Management for admissions, fees, classes, and examinations.</p>
+          <ul><li>Admissions &amp; enrollment</li><li>Fee tracking</li><li>Report cards</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="Chamaflow-X">
+          <div class="card__icon">🏦</div>
+          <h3>Chamaflow-X</h3>
+          <p>SACCO &amp; Microfinance Management for members, loans, and savings.</p>
+          <ul><li>Member registry</li><li>Loan processing</li><li>Ledger reports</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="Renta-X">
+          <div class="card__icon">🏢</div>
+          <h3>Renta-X</h3>
+          <p>Rental Property Management for units, tenants, billing, and arrears tracking.</p>
+          <ul><li>Units &amp; tenants</li><li>Automated billing</li><li>Arrears reports</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="Medi-X">
+          <div class="card__icon">🏥</div>
+          <h3>Medi-X</h3>
+          <p>Hospital &amp; Clinic Management for patients, billing, pharmacy, and services.</p>
+          <ul><li>Patient database</li><li>Pharmacy management</li><li>Visit history</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="QikSend-X">
+          <div class="card__icon">🚚</div>
+          <h3>QikSend-X</h3>
+          <p>Delivery &amp; Courier Management for orders, drivers, routes, and proof of delivery.</p>
+          <ul><li>Order tracking</li><li>Driver management</li><li>Customer notifications</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="SiteManager360">
+          <div class="card__icon">🏗️</div>
+          <h3>SiteManager360</h3>
+          <p>Construction Project &amp; Site Management with materials, labor, tasks, and budgets.</p>
+          <ul><li>Materials tracking</li><li>Labor management</li><li>Budget reports</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="Juris360">
+          <div class="card__icon">⚖️</div>
+          <h3>Juris360</h3>
+          <p>Legal Practice Management for cases, clients, billing, and documents.</p>
+          <ul><li>Case management</li><li>Time &amp; billing</li><li>Document storage</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="GreenMind-X">
+          <div class="card__icon">🌾</div>
+          <h3>GreenMind-X</h3>
+          <p>Agro-Dealer / Farm Management for inputs, suppliers, harvests, and sales.</p>
+          <ul><li>Inventory tracking</li><li>Supplier management</li><li>Harvest reports</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
+
+        <article class="card" id="SalesPro360">
+          <div class="card__icon">📈</div>
+          <h3>SalesPro360</h3>
+          <p>Sales Team Management for leads, pipelines, targets, and performance tracking.</p>
+          <ul><li>Lead tracking</li><li>Pipeline management</li><li>Performance analytics</li></ul>
+          <a href="contact.html#book" class="btn btn--sm mtop">Request Pricing</a>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <section class="footer">
-    <h4>Contact Us</h4>
-    <p class="white-text">Email: kwetudist@gmail.com | Phone: +254 718 524 470 | +254 740 337 272</p>
-    <p class="white-text">© 2025 KWETU Partners Ltd</p>
-  </section>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="slogan">Name it — We code it.</p>
+      <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
+    </div>
+  </footer>
 
-  <!-- JavaScript for Mobile Menu -->
+  <!-- Scripts -->
   <script>
-    var navLinks = document.getElementById("navLinks");
-    function showMenu() {
-      navLinks.style.right = "0";
-    }
-    function hideMenu() {
-      navLinks.style.right = "-200px";
-    }
-  </script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Mobile menu
+    (function(){
+      const btn = document.querySelector('.hamburger');
+      const menu = document.getElementById('mobileMenu');
+      if(!btn || !menu) return;
+
+      btn.addEventListener('click', () => {
+        const open = btn.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if(open){ menu.removeAttribute('hidden'); }
+        else{ menu.setAttribute('hidden',''); }
+      });
+
+      menu.addEventListener('click', (e) => {
+        if(e.target.tagName.toLowerCase() === 'a'){
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded','false');
+          menu.setAttribute('hidden','');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
