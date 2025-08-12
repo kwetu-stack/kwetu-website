@@ -75,7 +75,62 @@ h3{font-size:1.25rem; margin:.25rem 0 .5rem}
 .section--alt{background:var(--soft)}
 .section__lead{color:var(--muted); margin-top:-.25rem}
 
-/* Grid of products */
+/* Chips */
+.chips{display:flex; flex-wrap:wrap; gap:.6rem; margin:.6rem 0 0; padding:0; list-style:none}
+.chips li{background:#fff; border:1px solid #e8eaf0; padding:.5rem .7rem; border-radius:999px}
+
+/* Contact cards */
+.contact{display:grid; gap:1rem; grid-template-columns:repeat(3, 1fr); margin-top:.8rem}
+.contact__card{
+  background:#fff; border:1px solid #e8eaf0; border-radius:14px; padding:1rem;
+  box-shadow:0 10px 24px rgba(15,23,42,.06)
+}
+.contact__card a{color:var(--indigo); text-decoration:none}
+
+/* CTA band */
+.cta{background:linear-gradient(90deg, var(--indigo), var(--purple)); color:#fff}
+.cta__inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.2rem 0}
+.cta__inner p{opacity:.95; margin:0}
+
+/* Featured Products */
+.featured__head{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.6rem;
+}
+.carousel{
+  position:relative; overflow:hidden; border-radius:16px; background:var(--soft);
+  padding: .6rem 2.2rem;
+}
+.carousel__track{
+  display:flex; gap:.8rem; scroll-behavior:smooth; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;
+  padding:.4rem 0 1rem;
+}
+.carousel__track::-webkit-scrollbar{display:none}
+.slide{
+  flex:0 0 260px; background:#fff; border:1px solid #eef0f4; border-radius:16px; padding:1rem; text-decoration:none;
+  color:var(--text); box-shadow:0 8px 24px rgba(2,8,23,.06); transition:transform .08s, box-shadow .2s;
+}
+.slide:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(2,8,23,.1)}
+.slide h3{margin:.4rem 0 .2rem}
+.slide p{margin:0; color:var(--muted)}
+.slide__icon{
+  width:42px;height:42px;display:grid;place-items:center;border-radius:12px;color:#fff;
+  background:linear-gradient(135deg, var(--indigo), var(--purple)); box-shadow:0 6px 18px rgba(99,102,241,.25); margin-bottom:.4rem;
+}
+.carousel__nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:38px;height:38px;border-radius:999px;border:none; cursor:pointer;
+  background:#fff; box-shadow:0 10px 24px rgba(15,23,42,.12);
+  font-size:22px; line-height:38px;
+}
+.carousel__nav--prev{left:.5rem}
+.carousel__nav--next{right:.5rem}
+
+/* Footer */
+.footer{background:#0b1020; color:#cbd5e1; padding:1.6rem 0}
+.footer__inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem}
+.slogan{color:#e2e8f0; font-weight:600}
+
+/* Grid helpers (if you reuse product cards elsewhere) */
 .grid{
   display:grid; gap:1rem;
   grid-template-columns:repeat(3, 1fr);
@@ -95,28 +150,6 @@ h3{font-size:1.25rem; margin:.25rem 0 .5rem}
 }
 .card p{color:#475569; margin:.35rem 0 0}
 
-/* Chips */
-.chips{display:flex; flex-wrap:wrap; gap:.6rem; margin:.6rem 0 0; padding:0; list-style:none}
-.chips li{background:#fff; border:1px solid #e8eaf0; padding:.5rem .7rem; border-radius:999px}
-
-/* CTA band */
-.cta{background:linear-gradient(90deg, var(--indigo), var(--purple)); color:#fff}
-.cta__inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.2rem 0}
-.cta__inner p{opacity:.95; margin:0}
-
-/* Contact */
-.contact{display:grid; gap:1rem; grid-template-columns:repeat(3, 1fr); margin-top:.8rem}
-.contact__card{
-  background:#fff; border:1px solid #e8eaf0; border-radius:14px; padding:1rem;
-  box-shadow:0 10px 24px rgba(15,23,42,.06)
-}
-.contact__card a{color:var(--indigo); text-decoration:none}
-
-/* Footer */
-.footer{background:#0b1020; color:#cbd5e1; padding:1.6rem 0}
-.footer__inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem}
-.slogan{color:#e2e8f0; font-weight:600}
-
 /* Responsive */
 @media (max-width: 980px){
   .grid{grid-template-columns:repeat(2, 1fr)}
@@ -126,4 +159,6 @@ h3{font-size:1.25rem; margin:.25rem 0 .5rem}
   .menu a:nth-child(-n+3){display:none}
   .grid{grid-template-columns:1fr}
   .contact{grid-template-columns:1fr}
+  .carousel{padding:.6rem 1.4rem}
+  .slide{flex-basis:78%}
 }
