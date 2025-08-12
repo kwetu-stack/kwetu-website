@@ -1,78 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us - KWETU Partners</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Kwetu Partners Ltd</title>
+  <meta name="description" content="Book a demo or talk to sales. Kwetu Partners Ltd — Business Management Software." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+  <link rel="icon" href="logo.png" />
 </head>
 <body>
-
-  <!-- Header -->
-  <section class="sub-header">
-    <nav>
-        <img src="logo.png" alt="KWETU Logo">
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html">
+        <img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/>
+        <span class="brand__name">Kwetu Partners Ltd</span>
       </a>
-      <i class="fa fa-bars"></i>
-      <div class="nav-links" id="navLinks">
-        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="about us.html">ABOUT</a></li>
-          <li><a href="our products.html">PRODUCTS</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-          <li><a href="login.html">LOGIN</a></li>
-        </ul>
-        </div>
-           <i class="fa-solid fa-bars" onclick="showMenu()"></i>
-    </nav>
-    <h1>Contact KWETU Partners</h1>
+      <nav class="menu">
+        <a href="index.html#solutions">Solutions</a>
+        <a href="about us.html">About Us</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="#book" class="btn btn--sm">Book a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1>Talk to Sales</h1>
+        <p>Book a live demo and see how our software fits your business today.</p>
+        <div class="trust"><span>WhatsApp</span><span>Call</span><span>Email</span></div>
+      </div>
+      <div class="hero__art">
+        <img src="customer care.png.jpg" alt="Customer support illustration"/>
+      </div>
+    </div>
+    <div class="hero__wave" aria-hidden="true"></div>
   </section>
 
-  <!-- Contact Content -->
-  <section class="contact-us">
-    <div class="row">
-      <div class="contact-col">
-        <h3>Get in Touch</h3>
-        <p class="white-text">We’d love to hear from you! Reach out via the form or our contact details below.</p>
-        <div class="icons">
-          <i class="fab fa-facebook-f"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-linkedin-in"></i>
+  <!-- Direct contacts -->
+  <section class="section" id="book">
+    <div class="container">
+      <h2>Direct Contacts</h2>
+      <div class="contact">
+        <div class="contact__card">
+          <h4>Call / WhatsApp</h4>
+          <p>📞 <a href="tel:+254740337272">+254 740 337 272</a></p>
+          <p>📞 <a href="tel:+254718524470">+254 718 524 470</a></p>
+          <p>💬 <a target="_blank" href="https://wa.me/254740337272">Chat on WhatsApp</a></p>
         </div>
-      </div>
-      <div class="contact-col">
-        <form action="/send-message" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <input type="text" name="subject" placeholder="Subject" />
-          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit" class="hero-btn">Send Message</button>
-        </form>
+        <div class="contact__card">
+          <h4>Email</h4>
+          <p>✉️ <a href="mailto:kwetudist@gmail.com">kwetudist@gmail.com</a></p>
+          <p>🌐 <a href="https://kwetupartners.net">kwetupartners.net</a></p>
+        </div>
+        <div class="contact__card">
+          <h4>Office Hours</h4>
+          <p>Mon–Sat: 9:00–18:00 (EAT)</p>
+          <p>Remote demos available nationwide.</p>
+        </div>
       </div>
     </div>
   </section>
-  <script>
 
-        var navLinks= document.getElementById("navLinks");
-        function showMenu(){
-             navLinks.style.right= "0";
-        }
-        function hideMenu(){
-            navLinks.style.right= "-200px";
-        }
-   </script>
-   
+  <!-- Simple form -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Request a Demo</h2>
+      <p class="section__lead">Tell us about your business. We’ll reach out to schedule your session.</p>
 
-  <!-- Footer -->
-  <section class="footer">
-    <h4>Contact Us</h4>
-    <p class="white-text">Email: kwetudist@gmail.com | Phone: +254 718 524 470 | +254 740 337 272</p>
-    <p class="white-text">© 2025 KWETU Partners Ltd</p>
+      <form class="card" method="post" action="form-handler.php" style="max-width:720px;margin:auto;">
+        <div style="display:grid;gap:.8rem;grid-template-columns:1fr 1fr;">
+          <input required name="name" placeholder="Full name" style="padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;">
+          <input required name="phone" placeholder="Phone (e.g., +254 7xx)" style="padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;">
+        </div>
+        <input required type="email" name="email" placeholder="Email" style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;">
+        <select name="product" required style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;">
+          <option value="">Select a product…</option>
+          <option>Inventa</option>
+          <option>Inventa-X</option>
+          <option>Academix</option>
+          <option>Chamaflow-X</option>
+          <option>Renta-X</option>
+          <option>Medi-X</option>
+          <option>QikSend-X</option>
+          <option>SiteManager360</option>
+          <option>Juris360</option>
+          <option>GreenMind-X</option>
+          <option>SalesPro360</option>
+        </select>
+        <textarea name="message" rows="4" placeholder="Tell us about your needs…" style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;"></textarea>
+        <div style="margin-top:.9rem;display:flex;gap:.6rem;justify-content:flex-end;">
+          <button type="reset" class="btn btn--outline">Clear</button>
+          <button type="submit" class="btn">Send Request</button>
+        </div>
+      </form>
+    </div>
   </section>
 
-  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="slogan">Name it — We code it.</p>
+      <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
