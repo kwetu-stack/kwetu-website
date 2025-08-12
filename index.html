@@ -9,40 +9,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Inline add-ons so you don't need another edit -->
   <style>
-    /* --- Additions to ensure this page is complete even if style.css isn't updated --- */
-
-    /* Mobile hamburger + drawer */
-    .hamburger{display:none;background:transparent;border:none;cursor:pointer;padding:.4rem;margin-left:.4rem}
-    .hamburger span{display:block;width:26px;height:3px;background:#fff;border-radius:2px;margin:5px 0;transition:transform .2s,opacity .2s}
-    .hamburger.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
-    .hamburger.is-open span:nth-child(2){opacity:0}
-    .hamburger.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
-    .mobile-menu{display:grid;gap:.6rem;padding:.8rem .9rem 1rem;background:linear-gradient(90deg,#4F46E5,#7C3AED)}
-    .mobile-menu a{color:#fff;text-decoration:none;padding:.55rem .7rem;border-radius:10px}
-    .mobile-menu a.btn{background:#fff;color:#4F46E5;text-align:center}
-    @media (max-width:820px){.menu{display:none}.hamburger{display:block}}
-
-    /* Featured carousel */
-    .featured__head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.6rem}
-    .carousel{position:relative;overflow:hidden;border-radius:16px;background:#F3F4F6;padding:.6rem 2.2rem}
-    .carousel__track{display:flex;gap:.8rem;scroll-behavior:smooth;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:.4rem 0 1rem}
-    .carousel__track::-webkit-scrollbar{display:none}
-    .slide{flex:0 0 260px;background:#fff;border:1px solid #eef0f4;border-radius:16px;padding:1rem;text-decoration:none;color:#0f172a;box-shadow:0 8px 24px rgba(2,8,23,.06);transition:transform .08s,box-shadow .2s}
-    .slide:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(2,8,23,.1)}
-    .slide h3{margin:.4rem 0 .2rem}
-    .slide p{margin:0;color:#475569}
-    .slide__icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;color:#fff;background:linear-gradient(135deg,#4F46E5,#7C3AED);box-shadow:0 6px 18px rgba(99,102,241,.25);margin-bottom:.4rem}
-    .carousel__nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:999px;border:none;cursor:pointer;background:#fff;box-shadow:0 10px 24px rgba(15,23,42,.12);font-size:22px;line-height:38px}
-    .carousel__nav--prev{left:.5rem}
-    .carousel__nav--next{right:.5rem}
-    @media (max-width:640px){.carousel{padding:.6rem 1.4rem}.slide{flex-basis:78%}}
+    /* Mobile menu fix pack (page-scoped) */
+    .nav{z-index:100}
+    .hamburger{position:relative;z-index:110}
+    .mobile-menu{
+      position:fixed;left:0;right:0;top:calc(var(--nav-h,64px));z-index:90;
+      max-height:calc(100vh - var(--nav-h,64px));overflow:auto;
+      transform:translateY(-8px);opacity:0;visibility:hidden;
+      transition:transform .2s,opacity .2s,visibility .2s;
+    }
+    .mobile-menu.is-open{transform:none;opacity:1;visibility:visible}
+    .mobile-menu[hidden]{display:none!important}
   </style>
 </head>
 <body>
-  <!-- Header with desktop + mobile nav -->
+  <!-- Header -->
   <header class="nav">
     <div class="container nav__inner">
       <a class="brand" href="index.html">
@@ -50,7 +32,6 @@
         <span class="brand__name">Kwetu Partners Ltd</span>
       </a>
 
-      <!-- Desktop menu -->
       <nav class="menu">
         <a href="our products.html">Solutions</a>
         <a href="about us.html">About Us</a>
@@ -59,13 +40,11 @@
         <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
       </nav>
 
-      <!-- Mobile hamburger -->
       <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
 
-    <!-- Mobile drawer -->
     <nav id="mobileMenu" class="mobile-menu" hidden>
       <a href="our products.html">Solutions</a>
       <a href="about us.html">About Us</a>
@@ -90,14 +69,13 @@
         </div>
       </div>
       <div class="hero__art">
-        <!-- Use an existing image from your repo to avoid 404s -->
         <img src="techlab.png" alt="Modern abstract illustration" />
       </div>
     </div>
     <div class="hero__wave" aria-hidden="true"></div>
   </section>
 
-  <!-- Featured Products Carousel -->
+  <!-- Featured Products -->
   <section class="section featured">
     <div class="container">
       <div class="featured__head">
@@ -107,66 +85,19 @@
 
       <div class="carousel">
         <button class="carousel__nav carousel__nav--prev" aria-label="Prev">‹</button>
-
         <div class="carousel__track" id="carouselTrack">
-          <!-- These link to anchors we’ll add on 'our products.html' -->
-          <a href="our products.html#Inventa" class="slide">
-            <div class="slide__icon">📄</div>
-            <h3>Inventa</h3>
-            <p>Invoice & inventory in seconds.</p>
-          </a>
-          <a href="our products.html#Inventa-X" class="slide">
-            <div class="slide__icon">🧾</div>
-            <h3>Inventa-X</h3>
-            <p>POS + multi-branch dashboards.</p>
-          </a>
-          <a href="our products.html#Academix" class="slide">
-            <div class="slide__icon">🎓</div>
-            <h3>Academix</h3>
-            <p>Admissions, fees, exams, reports.</p>
-          </a>
-          <a href="our products.html#Chamaflow-X" class="slide">
-            <div class="slide__icon">🏦</div>
-            <h3>Chamaflow-X</h3>
-            <p>Members, loans & ledgers.</p>
-          </a>
-          <a href="our products.html#Renta-X" class="slide">
-            <div class="slide__icon">🏢</div>
-            <h3>Renta-X</h3>
-            <p>Units, tenants, billing & arrears.</p>
-          </a>
-          <a href="our products.html#Medi-X" class="slide">
-            <div class="slide__icon">🏥</div>
-            <h3>Medi-X</h3>
-            <p>Patients, billing & pharmacy.</p>
-          </a>
-          <a href="our products.html#QikSend-X" class="slide">
-            <div class="slide__icon">🚚</div>
-            <h3>QikSend-X</h3>
-            <p>Orders, drivers, routes, POD.</p>
-          </a>
-          <a href="our products.html#SiteManager360" class="slide">
-            <div class="slide__icon">🏗️</div>
-            <h3>SiteManager360</h3>
-            <p>Materials, labor & budgets.</p>
-          </a>
-          <a href="our products.html#Juris360" class="slide">
-            <div class="slide__icon">⚖️</div>
-            <h3>Juris360</h3>
-            <p>Matters, clients & billing.</p>
-          </a>
-          <a href="our products.html#GreenMind-X" class="slide">
-            <div class="slide__icon">🌾</div>
-            <h3>GreenMind-X</h3>
-            <p>Inputs, harvests & sales.</p>
-          </a>
-          <a href="our products.html#SalesPro360" class="slide">
-            <div class="slide__icon">📈</div>
-            <h3>SalesPro360</h3>
-            <p>Leads, pipelines, targets.</p>
-          </a>
+          <a href="our products.html#Inventa" class="slide"><div class="slide__icon">📄</div><h3>Inventa</h3><p>Invoice & inventory in seconds.</p></a>
+          <a href="our products.html#Inventa-X" class="slide"><div class="slide__icon">🧾</div><h3>Inventa-X</h3><p>POS + multi-branch dashboards.</p></a>
+          <a href="our products.html#Academix" class="slide"><div class="slide__icon">🎓</div><h3>Academix</h3><p>Admissions, fees, exams, reports.</p></a>
+          <a href="our products.html#Chamaflow-X" class="slide"><div class="slide__icon">🏦</div><h3>Chamaflow-X</h3><p>Members, loans & ledgers.</p></a>
+          <a href="our products.html#Renta-X" class="slide"><div class="slide__icon">🏢</div><h3>Renta-X</h3><p>Units, tenants, billing & arrears.</p></a>
+          <a href="our products.html#Medi-X" class="slide"><div class="slide__icon">🏥</div><h3>Medi-X</h3><p>Patients, billing & pharmacy.</p></a>
+          <a href="our products.html#QikSend-X" class="slide"><div class="slide__icon">🚚</div><h3>QikSend-X</h3><p>Orders, drivers, routes, POD.</p></a>
+          <a href="our products.html#SiteManager360" class="slide"><div class="slide__icon">🏗️</div><h3>SiteManager360</h3><p>Materials, labor & budgets.</p></a>
+          <a href="our products.html#Juris360" class="slide"><div class="slide__icon">⚖️</div><h3>Juris360</h3><p>Matters, clients & billing.</p></a>
+          <a href="our products.html#GreenMind-X" class="slide"><div class="slide__icon">🌾</div><h3>GreenMind-X</h3><p>Inputs, harvests & sales.</p></a>
+          <a href="our products.html#SalesPro360" class="slide"><div class="slide__icon">📈</div><h3>SalesPro360</h3><p>Leads, pipelines, targets.</p></a>
         </div>
-
         <button class="carousel__nav carousel__nav--next" aria-label="Next">›</button>
       </div>
     </div>
@@ -177,15 +108,9 @@
     <div class="container">
       <h2>Industries we serve</h2>
       <ul class="chips">
-        <li>Retail &amp; Wholesale</li>
-        <li>Education</li>
-        <li>SACCOs &amp; MFIs</li>
-        <li>Real Estate</li>
-        <li>Healthcare</li>
-        <li>Courier &amp; Logistics</li>
-        <li>Construction</li>
-        <li>Agriculture</li>
-        <li>Legal</li>
+        <li>Retail &amp; Wholesale</li><li>Education</li><li>SACCOs &amp; MFIs</li>
+        <li>Real Estate</li><li>Healthcare</li><li>Courier &amp; Logistics</li>
+        <li>Construction</li><li>Agriculture</li><li>Legal</li>
       </ul>
     </div>
   </section>
@@ -230,48 +155,42 @@
     </div>
   </footer>
 
-  <!-- Scripts: year, mobile nav, and carousel -->
+  <!-- Scripts -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile menu
+    // Mobile menu (robust)
     (function(){
-      const btn = document.querySelector('.hamburger');
-      const menu = document.getElementById('mobileMenu');
-      if(!btn || !menu) return;
-
-      btn.addEventListener('click', () => {
-        const open = btn.classList.toggle('is-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        if(open){ menu.removeAttribute('hidden'); }
-        else{ menu.setAttribute('hidden',''); }
-      });
-
-      menu.addEventListener('click', (e) => {
-        if(e.target.tagName.toLowerCase() === 'a'){
-          btn.classList.remove('is-open');
-          btn.setAttribute('aria-expanded','false');
-          menu.setAttribute('hidden','');
-        }
-      });
+      const header=document.querySelector('.nav');
+      const btn=document.querySelector('.hamburger');
+      const menu=document.getElementById('mobileMenu');
+      if(!header||!btn||!menu) return;
+      function setNavHeight(){ const h=header.offsetHeight||64; document.documentElement.style.setProperty('--nav-h',h+'px'); }
+      setNavHeight(); window.addEventListener('resize',setNavHeight); window.addEventListener('scroll',setNavHeight);
+      function openMenu(on){
+        btn.classList.toggle('is-open',on);
+        btn.setAttribute('aria-expanded',on?'true':'false');
+        menu.classList.toggle('is-open',on);
+        if(on) menu.removeAttribute('hidden'); else menu.setAttribute('hidden','');
+      }
+      btn.addEventListener('click',()=>openMenu(!menu.classList.contains('is-open')));
+      menu.addEventListener('click',(e)=>{ if(e.target.tagName.toLowerCase()==='a') openMenu(false); });
+      window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') openMenu(false); });
+      document.addEventListener('click',(e)=>{ if(!menu.classList.contains('is-open'))return; if(!(menu.contains(e.target)||btn.contains(e.target))) openMenu(false); });
     })();
 
-    // Carousel controls + auto-scroll
+    // Carousel
     (function(){
-      const track = document.getElementById('carouselTrack');
-      const prev = document.querySelector('.carousel__nav--prev');
-      const next = document.querySelector('.carousel__nav--next');
-      if(!track || !prev || !next) return;
-
-      const step = 300;
-      prev.addEventListener('click', () => track.scrollBy({left: -step, behavior: 'smooth'}));
-      next.addEventListener('click', () => track.scrollBy({left:  step, behavior: 'smooth'}));
-
-      let timer = setInterval(() => track.scrollBy({left: step, behavior: 'smooth'}), 3500);
-      track.addEventListener('mouseenter', () => clearInterval(timer));
-      track.addEventListener('mouseleave', () => {
-        timer = setInterval(() => track.scrollBy({left: step, behavior: 'smooth'}), 3500);
-      });
+      const track=document.getElementById('carouselTrack');
+      const prev=document.querySelector('.carousel__nav--prev');
+      const next=document.querySelector('.carousel__nav--next');
+      if(!track||!prev||!next) return;
+      const step=300;
+      prev.addEventListener('click',()=>track.scrollBy({left:-step,behavior:'smooth'}));
+      next.addEventListener('click',()=>track.scrollBy({left: step,behavior:'smooth'}));
+      let timer=setInterval(()=>track.scrollBy({left:step,behavior:'smooth'}),3500);
+      track.addEventListener('mouseenter',()=>clearInterval(timer));
+      track.addEventListener('mouseleave',()=>{ timer=setInterval(()=>track.scrollBy({left:step,behavior:'smooth'}),3500); });
     })();
   </script>
 </body>
