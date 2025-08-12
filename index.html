@@ -1,97 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KWETU Partners - FMCG SaaS Solutions</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kwetu Partners Ltd — Business Management Softwares</title>
+  <meta name="description" content="11 purpose-built management softwares for African businesses. Fast setup, secure, and locally supported by Kwetu Partners Ltd." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+  <link rel="icon" href="logo.png" />
 </head>
 <body>
-
-  <!-- Header / Hero Section -->
-  <section class="header">
-    <nav>
-      <a href="index.html">
-        <img src="logo.png" alt="KWETU Logo">
+  <!-- Top Nav -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#">
+        <img src="logo.png" alt="Kwetu Partners Logo" class="brand__logo" />
+        <span class="brand__name">Kwetu Partners Ltd</span>
       </a>
-      <i class="fa fa-bars"></i>
-      <div class="nav-links" id="navLinks">
-        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="about us.html">ABOUT</a></li>
-          <li><a href="our products.html">PRODUCTS</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-          <li><a href="login.html">LOGIN</a></li>
-        </ul>
+      <nav class="menu">
+        <a href="#solutions">Solutions</a>
+        <a href="#industries">Industries</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact" class="btn btn--sm btn--outline">Contact</a>
+        <a href="#demo" class="btn btn--sm">Book a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1>Business software that just works.</h1>
+        <p>We built <strong>11 purpose-built systems</strong> for African SMEs—deploy in days, not months. Simple pricing, local support, serious results.</p>
+        <div class="hero__cta">
+          <a id="demo" href="#contact" class="btn btn--lg">Book a Demo</a>
+          <a href="#solutions" class="btn btn--lg btn--outline">See all Solutions</a>
         </div>
-           <i class="fa-solid fa-bars" onclick="showMenu()"></i>
-    </nav>
+        <div class="trust">
+          <span>⚡ Fast Setup</span><span>🔒 Secure</span><span>💬 Local Support</span>
+        </div>
+      </div>
+      <div class="hero__art">
+        <img src="techlab.png" alt="Modern abstract illustration" />
+      </div>
+    </div>
+    <div class="hero__wave" aria-hidden="true"></div>
+  </section>
 
-    <div class="text-box">
-      <h1>Digital Tools for FMCG Growth</h1>
-      <p class="white-text">KWETU Partners delivers SaaS solutions that simplify Sales, Inventory, and Marketing for Africa’s fast-moving businesses.</p>
-      <a href="our products.html" class="hero-btn">Explore Our Products</a>
+  <!-- Solutions -->
+  <section id="solutions" class="section">
+    <div class="container">
+      <h2>Our Solutions</h2>
+      <p class="section__lead">From retail to legal, healthcare to agriculture—choose the tool built for your industry.</p>
+
+      <div class="grid">
+        <!-- 1 -->
+        <article class="card">
+          <div class="card__icon">📄</div>
+          <h3>Inventa</h3>
+          <p>Invoicing &amp; Inventory System. Create invoices in seconds and keep stock accurate in real time.</p>
+        </article>
+        <!-- 2 -->
+        <article class="card">
+          <div class="card__icon">🧾</div>
+          <h3>Inventa-X</h3>
+          <p>Multi-tenant POS &amp; Inventory. Fast checkout, roles, and dashboards across branches/tenants.</p>
+        </article>
+        <!-- 3 -->
+        <article class="card">
+          <div class="card__icon">🎓</div>
+          <h3>Academix</h3>
+          <p>School/Institution Management. Admissions, fees, timetables, exams, reports—one place.</p>
+        </article>
+        <!-- 4 -->
+        <article class="card">
+          <div class="card__icon">🏦</div>
+          <h3>Chamaflow-X</h3>
+          <p>SACCO/Microfinance Management. Members, loans, savings, ledgers—automated and auditable.</p>
+        </article>
+        <!-- 5 -->
+        <article class="card">
+          <div class="card__icon">🏢</div>
+          <h3>Renta-X</h3>
+          <p>Rental Property Management. Units, tenants, billing, arrears tracking &amp; statements.</p>
+        </article>
+        <!-- 6 -->
+        <article class="card">
+          <div class="card__icon">🏥</div>
+          <h3>Medi-X</h3>
+          <p>Hospital/Clinic Management. Patients, visits, billing, pharmacy &amp; services.</p>
+        </article>
+        <!-- 7 -->
+        <article class="card">
+          <div class="card__icon">🚚</div>
+          <h3>QikSend-X</h3>
+          <p>Delivery &amp; Courier Operations. Orders, drivers, routes, POD &amp; customer notifications.</p>
+        </article>
+        <!-- 8 -->
+        <article class="card">
+          <div class="card__icon">🏗️</div>
+          <h3>SiteManager360</h3>
+          <p>Construction Project &amp; Site Management. Materials, labor, tasks, budgets &amp; reports.</p>
+        </article>
+        <!-- 9 -->
+        <article class="card">
+          <div class="card__icon">⚖️</div>
+          <h3>Juris360</h3>
+          <p>Legal Practice/Advocate Management. Matters, clients, time &amp; billing, documents.</p>
+        </article>
+        <!-- 10 -->
+        <article class="card">
+          <div class="card__icon">🌾</div>
+          <h3>GreenMind-X</h3>
+          <p>Agro-Dealer/Farm Management. Inputs, suppliers, harvests, customers &amp; sales.</p>
+        </article>
+        <!-- 11 -->
+        <article class="card">
+          <div class="card__icon">📈</div>
+          <h3>SalesPro360</h3>
+          <p>Sales Team Management. Leads, pipelines, targets, activity tracking &amp; performance.</p>
+        </article>
+      </div>
+
+      <div class="center mtop">
+        <a href="#contact" class="btn btn--lg">Talk to Sales</a>
+      </div>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="features">
-    <h2>What We Offer</h2>
-    <div class="row">
-      <div class="feature-col">
-        <i class="fa fa-box"></i>
-        <h3>Smart Inventory</h3>
-        <p class="white-text">Real-time stock management with alerts and dashboards.</p>
-      </div>
-      <div class="feature-col">
-        <i class="fa fa-truck"></i>
-        <h3>Order Management</h3>
-        <p class="white-text">Streamline order tracking and approvals from field to HQ.</p>
-      </div>
-      <div class="feature-col">
-        <i class="fa fa-bullhorn"></i>
-        <h3>Promotions ROI</h3>
-        <p class="white-text">Measure and optimize trade campaigns with data insights.</p>
+  <!-- Industries -->
+  <section id="industries" class="section section--alt">
+    <div class="container">
+      <h2>Industries we serve</h2>
+      <ul class="chips">
+        <li>Retail &amp; Wholesale</li>
+        <li>Education</li>
+        <li>SACCOs &amp; MFIs</li>
+        <li>Real Estate</li>
+        <li>Healthcare</li>
+        <li>Courier &amp; Logistics</li>
+        <li>Construction</li>
+        <li>Agriculture</li>
+        <li>Legal</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Pricing (placeholder CTA band) -->
+  <section id="pricing" class="cta">
+    <div class="container cta__inner">
+      <h3>Simple, transparent pricing.</h3>
+      <p>Pay once, train free. Volume &amp; bundle discounts available.</p>
+      <a href="#contact" class="btn btn--lg btn--light">Request Pricing</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact / Book a Demo</h2>
+      <div class="contact">
+        <div class="contact__card">
+          <h4>Call/WhatsApp</h4>
+          <p>📞 <a href="tel:+254740337272">+254 740 337 272</a></p>
+          <p>📞 <a href="tel:+254718524470">+254 718 524 470</a></p>
+        </div>
+        <div class="contact__card">
+          <h4>Email</h4>
+          <p>✉️ <a href="mailto:kwetudist@gmail.com">kwetudist@gmail.com</a></p>
+        </div>
+        <div class="contact__card">
+          <h4>Website</h4>
+          <p>🌐 <a href="https://kwetupartners.net">kwetupartners.net</a></p>
+        </div>
       </div>
     </div>
   </section>
-   <script>
-
-        var navLinks= document.getElementById("navLinks");
-        function showMenu(){
-             navLinks.style.right= "0";
-        }
-        function hideMenu(){
-            navLinks.style.right= "-200px";
-        }
-   </script>
-   
-
-  <!-- Call to Action -->
-  <section class="cta">
-    <h2>Join leading FMCG businesses across Africa</h2>
-    <a href="contact.html" class="hero-btn">Contact Us Today</a>
-  </section>
-
-  <!-- Login Form -->
-  <form action="/login" method="POST">
-    <!-- Add your login form fields here -->
-  </form>
-
-  <!-- Sign Up Form -->
-  <form action="/signup" method="POST">
-    <!-- Add your sign up form fields here -->
-  </form>
 
   <!-- Footer -->
-  <section class="footer">
-    <h4>Contact Us</h4>
-    <p class="white-text">Email: kwetudist@gmail.com | Phone: +254 718 524 470| +254 740 337 272</p>
-    <p class="white-text">© 2025 KWETU Partners Ltd</p>
-  </section>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="slogan">Name it — We code it.</p>
+      <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
+    </div>
+  </footer>
 
-  
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
