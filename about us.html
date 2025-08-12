@@ -1,75 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - KWETU Partners</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — Kwetu Partners Ltd</title>
+  <meta name="description" content="We build fast, reliable business software for African SMEs. Meet Kwetu Partners and our 11-product suite." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+  <link rel="icon" href="logo.png" />
 </head>
 <body>
-
-  <!-- Header -->
-  <section class="sub-header">
-    <nav>
-        <img src="logo.png" alt="KWETU Logo">
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html">
+        <img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/>
+        <span class="brand__name">Kwetu Partners Ltd</span>
       </a>
-      <i class="fa fa-bars"></i>
-      <div class="nav-links" id="navLinks">
-        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="about us.html">ABOUT</a></li>
-          <li><a href="our products.html">PRODUCTS</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-          <li><a href="login.html">LOGIN</a></li>
-        </ul>
+      <nav class="menu">
+        <a href="index.html#solutions">Solutions</a>
+        <a href="about us.html" class="active">About Us</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
+        <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1>We build software that scales with you.</h1>
+        <p>Kwetu Partners is a product-first IT company focused on practical, high-impact systems for African businesses. Our 11-product suite helps you run operations, see insights, and grow confidently.</p>
+        <div class="hero__cta">
+          <a href="index.html#solutions" class="btn btn--lg">See all Solutions</a>
+          <a href="contact.html#book" class="btn btn--lg btn--outline">Book a Demo</a>
         </div>
-           <i class="fa-solid fa-bars" onclick="showMenu()"></i>
-    </nav>
-    <h1>About KWETU Partners</h1>
+      </div>
+      <div class="hero__art">
+        <img src="adv tech.png.jpg" alt="Team at work"/>
+      </div>
+    </div>
+    <div class="hero__wave" aria-hidden="true"></div>
   </section>
 
-  <!-- About Content -->
-  <section class="about-us">
-    <div class="row">
-      <div class="about-col">
-        <h2>We are Africa’s Smart FMCG Platform</h2>
-        <p class="white-text">KWETU Partners Ltd empowers manufacturers and distributors in Africa with tailored SaaS solutions for sales, inventory, and trade marketing. We are a team of developers, marketers, and FMCG experts focused on making field execution data-driven and smarter.</p>
-        <a href="#" class="hero-btn red-btn">Learn More</a>
-      </div>
-      <div class="about-col">
-        <img src="msa.png.jpg" alt="KWETU Partners Team">
+  <!-- Mission / Values -->
+  <section class="section">
+    <div class="container">
+      <h2>Our mission</h2>
+      <p class="section__lead">Make modern business software accessible to every SME—fast to deploy, easy to use, and supported locally.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card__icon">⚡</div>
+          <h3>Speed to value</h3>
+          <p>Deploy in days, not months. Import your data and start operating immediately.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">🔒</div>
+          <h3>Trust & Security</h3>
+          <p>Solid engineering practices and secure hosting. Your business data stays protected.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">🤝</div>
+          <h3>Local support</h3>
+          <p>Friendly onboarding, training, and ongoing help from a team that understands your context.</p>
+        </article>
       </div>
     </div>
   </section>
-  <!-------JavaScript For Toggle Menu-->
-     <script>
 
-        var navLinks= document.getElementById("navLinks");
-         function showMenu(){
-             navLinks.style.right= "0";
-        }
-        function hideMenu(){
-            navLinks.style.right= "-200px";
-        }
-   </script>
-   
+  <!-- Why choose us -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Why companies choose Kwetu Partners</h2>
+      <ul class="chips">
+        <li>11 ready-made products</li>
+        <li>Customizable</li>
+        <li>Mobile-responsive</li>
+        <li>Affordable pricing</li>
+        <li>Reports & dashboards</li>
+        <li>Fast support</li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <h3>Name it — we code it.</h3>
+      <p>Tell us what you need and we’ll tailor the right solution.</p>
+      <a href="contact.html#book" class="btn btn--lg btn--light">Talk to Sales</a>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <section class="footer">
-    <h4>Contact Us</h4>
-    <p class="white-text">Email: kwetudist@gmail.com | Phone: +254 718 524 470 | +254 740 337 272</p>
-    <div class="icons">
-      <i class="fab fa-facebook-f"></i>
-      <i class="fab fa-twitter"></i>
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-linkedin-in"></i>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="slogan">Name it — We code it.</p>
+      <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
     </div>
-    <p class="white-text">© 2025 KWETU Partners Ltd</p>
-  </section>
-
-  
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
