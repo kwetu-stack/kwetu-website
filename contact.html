@@ -7,24 +7,55 @@
   <meta name="description" content="Book a demo or talk to sales. Kwetu Partners Ltd — Business Management Software." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Mobile nav inline helpers */
+    .hamburger{display:none;background:transparent;border:none;cursor:pointer;padding:.4rem;margin-left:.4rem}
+    .hamburger span{display:block;width:26px;height:3px;background:#fff;border-radius:2px;margin:5px 0;transition:transform .2s,opacity .2s}
+    .hamburger.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .hamburger.is-open span:nth-child(2){opacity:0}
+    .hamburger.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+    .mobile-menu{display:grid;gap:.6rem;padding:.8rem .9rem 1rem;background:linear-gradient(90deg,#4F46E5,#7C3AED)}
+    .mobile-menu a{color:#fff;text-decoration:none;padding:.55rem .7rem;border-radius:10px}
+    .mobile-menu a.btn{background:#fff;color:#4F46E5;text-align:center}
+    @media (max-width:820px){.menu{display:none}.hamburger{display:block}}
+    /* Form helpers */
+    .form-card{max-width:720px;margin:auto;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:1rem;box-shadow:0 8px 24px rgba(2,8,23,.06)}
+    .form-row{display:grid;gap:.8rem;grid-template-columns:1fr 1fr}
+    .form-input, .form-select, .form-textarea{padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%}
+    @media (max-width:640px){.form-row{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <!-- Nav -->
+  <!-- Header -->
   <header class="nav">
     <div class="container nav__inner">
       <a class="brand" href="index.html">
         <img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/>
         <span class="brand__name">Kwetu Partners Ltd</span>
       </a>
+
       <nav class="menu">
-        <a href="index.html#solutions">Solutions</a>
+        <a href="our products.html">Solutions</a>
         <a href="about us.html">About Us</a>
         <a href="index.html#pricing">Pricing</a>
+        <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
         <a href="#book" class="btn btn--sm">Book a Demo</a>
       </nav>
+
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+
+    <nav id="mobileMenu" class="mobile-menu" hidden>
+      <a href="our products.html">Solutions</a>
+      <a href="about us.html">About Us</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="#book" class="btn btn--sm">Book a Demo</a>
+    </nav>
   </header>
 
   <!-- Hero -->
@@ -67,33 +98,26 @@
     </div>
   </section>
 
-  <!-- Simple form -->
+  <!-- Request a Demo form -->
   <section class="section section--alt">
     <div class="container">
       <h2>Request a Demo</h2>
       <p class="section__lead">Tell us about your business. We’ll reach out to schedule your session.</p>
 
-      <form class="card" method="post" action="form-handler.php" style="max-width:720px;margin:auto;">
-        <div style="display:grid;gap:.8rem;grid-template-columns:1fr 1fr;">
-          <input required name="name" placeholder="Full name" style="padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;">
-          <input required name="phone" placeholder="Phone (e.g., +254 7xx)" style="padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;">
+      <form class="form-card" method="post" action="form-handler.php">
+        <div class="form-row">
+          <input required name="name" placeholder="Full name" class="form-input">
+          <input required name="phone" placeholder="Phone (e.g., +254 7xx)" class="form-input">
         </div>
-        <input required type="email" name="email" placeholder="Email" style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;">
-        <select name="product" required style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;">
+        <input required type="email" name="email" placeholder="Email" class="form-input" style="margin-top:.8rem;">
+        <select name="product" required class="form-select" style="margin-top:.8rem;">
           <option value="">Select a product…</option>
-          <option>Inventa</option>
-          <option>Inventa-X</option>
-          <option>Academix</option>
-          <option>Chamaflow-X</option>
-          <option>Renta-X</option>
-          <option>Medi-X</option>
-          <option>QikSend-X</option>
-          <option>SiteManager360</option>
-          <option>Juris360</option>
-          <option>GreenMind-X</option>
-          <option>SalesPro360</option>
+          <option>Inventa</option><option>Inventa-X</option><option>Academix</option>
+          <option>Chamaflow-X</option><option>Renta-X</option><option>Medi-X</option>
+          <option>QikSend-X</option><option>SiteManager360</option><option>Juris360</option>
+          <option>GreenMind-X</option><option>SalesPro360</option>
         </select>
-        <textarea name="message" rows="4" placeholder="Tell us about your needs…" style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;"></textarea>
+        <textarea name="message" rows="4" placeholder="Tell us about your needs…" class="form-textarea" style="margin-top:.8rem;"></textarea>
         <div style="margin-top:.9rem;display:flex;gap:.6rem;justify-content:flex-end;">
           <button type="reset" class="btn btn--outline">Clear</button>
           <button type="submit" class="btn">Send Request</button>
@@ -109,6 +133,24 @@
       <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
     </div>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){
+      const btn = document.querySelector('.hamburger');
+      const menu = document.getElementById('mobileMenu');
+      if(!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        const open = btn.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if(open) menu.removeAttribute('hidden'); else menu.setAttribute('hidden','');
+      });
+      menu.addEventListener('click', (e) => {
+        if(e.target.tagName.toLowerCase() === 'a'){
+          btn.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('hidden','');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
