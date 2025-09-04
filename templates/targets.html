@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}Targets{% endblock %}
+
+{% block content %}
+<h1>Targets</h1>
+
+<div class="grid-2">
+  <div class="panel">
+    <div class="panel-title">This Month ({{ month }}/{{ year }}) — Supplier Targets</div>
+    <div class="big">{{ '{:,.2f}'.format(this_month_supplier_targets) }}</div>
+    <div class="muted">Sum of supplier targets for this month.</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">This Month ({{ month }}/{{ year }}) — Rep Targets</div>
+    <div class="big">{{ '{:,.2f}'.format(this_month_rep_targets) }}</div>
+    <div class="muted">Sum of rep targets for this month.</div>
+  </div>
+</div>
+
+{% if is_admin %}
+<div class="grid-2">
+  <div class="panel">
+    <div class="panel-title">Add Supplier Target</div>
+    <form method="post" action="{{ url_for('targets_supplier_add') }}" class="form-inline">
+      <input type="number" name="supplier_id" placeholder="Supplier ID" required>
+      <input type="number" name="month" min="1" max="12" value="{{ month }}" required>
+      <input type="number" name="year" value="{{ year }}" required>
+      <input type="number" name="target_value" step="0.01" placeholder="Target Value (KES)" required>
+      <button>Save</button>
+    </form>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Add Rep Target</div>
+    <form method="post" action="{{ url_for('targets_rep_add') }}" class="form-inline">
+      <input type="number" name="rep_id" placeholder="Rep ID" required>
+      <input type="number" name="month" min="1" max="12" value="{{ month }}" required>
+      <input type="number" name="year" value="{{ year }}" required>
+      <input type="number" name="target_value" step="0.01" placeholder="Target Value (KES)" required>
+      <button>Save</button>
+    </form>
+  </div>
+</div>
+
+<div class="grid-2">
+  <div class="panel">
+    <div class="panel-title">Add Supplier MTD (Manual)</div>
+    <form method="post" action="{{ url_for('targets_supplier_actual') }}" class="form-inline">
+      <input type="number" name="supplier_id" placeholder="Supplier ID" required>
+      <input type="number" name="month" min="1" max="12" value="{{ month }}" required>
+      <input type="number" name="year" value="{{ year }}" required>
+      <input type="number" name="mtd_value" step="0.01" placeholder="MTD Sales (KES)" required>
+      <button>Save MTD</button>
+    </form>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Add Rep MTD (Manual)</div>
+    <form method="post" action="{{ url_for('targets_rep_actual') }}" class="form-inline">
+      <input type="number" name="rep_id" placeholder="Rep ID" required>
+      <input type="number" name="month" min="1" max="12" value="{{ month }}" required>
+      <input type="number" name="year" value="{{ year }}" required>
+      <input type="number" name="mtd_value" step="0.01" placeholder="MTD Sales (KES)" required>
+      <button>Save MTD</button>
+    </form>
+  </div>
+</div>
+{% endif %}
+
+<div class="grid-2">
+  <div class="panel">
+    <div class="panel-title">Suppliers — This Month</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Supplier</th><th>Target</th><th>MTD</th><th>Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in supplier_rows %}
+        {% set pct = 0 if r.target_value == 0 else (r.mtd / r.target_value * 100) %}
+        <tr>
+          <td>{{ r.name }} <span class="tag">#{{ r.id }}</span></td>
+          <td>{{ '{:,.2f}'.format(r.target_value) }}</td>
+          <td>{{ '{:,.2f}'.format(r.mtd) }}</td>
+          <td>{{ '%.1f' % pct }}%</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Reps — This Month</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Rep</th><th>Target</th><th>MTD</th><th>Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rep_rows %}
+        {% set pct = 0 if r.target_value == 0 else (r.mtd / r.target_value * 100) %}
+        <tr>
+          <td>{{ r.name }} <span class="tag">#{{ r.id }}</span></td>
+          <td>{{ '{:,.2f}'.format(r.target_value) }}</td>
+          <td>{{ '{:,.2f}'.format(r.mtd) }}</td>
+          <td>{{ '%.1f' % pct }}%</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="grid-2">
+  <div class="panel">
+    <div class="panel-title">Recent Supplier Targets</div>
+    <div class="muted">latest 10 rows</div>
+    <table class="table">
+      <thead>
+        <tr><th>Supplier</th><th>Month</th><th>Year</th><th>Target</th></tr>
+      </thead>
+      <tbody>
+        {% for r in supp_recent %}
+        <tr>
+          <td>{{ r.supplier_name }} <span class="tag">#{{ r.supplier_id }}</span></td>
+          <td>{{ r.month }}</td>
+          <td>{{ r.year }}</td>
+          <td>{{ '{:,.2f}'.format(r.target_value) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Recent Rep Targets</div>
+    <div class="muted">latest 10 rows</div>
+    <table class="table">
+      <thead>
+        <tr><th>Rep</th><th>Month</th><th>Year</th><th>Target</th></tr>
+      </thead>
+      <tbody>
+        {% for r in reps_recent %}
+        <tr>
+          <td>{{ r.rep_name }} <span class="tag">#{{ r.rep_id }}</span></td>
+          <td>{{ r.month }}</td>
+          <td>{{ r.year }}</td>
+          <td>{{ '{:,.2f}'.format(r.target_value) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Order History | SalesPro360{% endblock %}
+{% block content %}
+
+{% for category, m in get_flashed_messages(with_categories=true) %}
+  <div class="flash {{ category }}">{{ m }}</div>
+{% endfor %}
+
+<h1>Order History</h1>
+
+<div class="card" style="padding:10px; margin-bottom:10px; display:flex; gap:8px; align-items:center;">
+  <div style="font-size:.95rem; opacity:.85;">All recorded orders</div>
+  <div style="margin-left:auto;">
+    <a class="btn" href="{{ url_for('orders_history_csv') }}">Export CSV</a>
+  </div>
+</div>
+
+<div class="card">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Order No</th>
+        <th>Sales<br>Rep</th>
+        <th>Customer</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Description of Goods</th>
+        <th class="right">Quantity</th>
+        <th class="right">Price</th>
+        <th class="right">Amount</th>
+        <th class="right">Total Amount</th>
+        <th style="width:200px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if orders and orders|length %}
+        {% for o in orders %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ o['order_no'] }}</td>
+          <td>{{ o['sales_rep'] or "—" }}</td>
+          <td>{{ o['customer_name'] or "—" }}</td>
+          <td>{{ o['customer_location'] or "—" }}</td>
+          <td>{{ o['created_at'] or "—" }}</td>
+
+          {# Description list #}
+          <td style="max-width:300px; white-space:pre-wrap;">
+            {% for it in o['items'] %}
+              <div>{{ it.label }}</div>
+            {% endfor %}
+          </td>
+
+          {# Qty list #}
+          <td class="right" style="white-space:pre;">
+            {% for it in o['items'] %}
+              <div>{{ it.qty }}</div>
+            {% endfor %}
+          </td>
+
+          {# Unit price list #}
+          <td class="right" style="white-space:pre;">
+            {% for it in o['items'] %}
+              <div>{{ '%.2f'|format(it.unit_price) }}</div>
+            {% endfor %}
+          </td>
+
+          {# Line amount list #}
+          <td class="right" style="white-space:pre;">
+            {% for it in o['items'] %}
+              <div>{{ '%.2f'|format(it.amount) }}</div>
+            {% endfor %}
+          </td>
+
+          <td class="right"><strong>{{ '%.2f'|format(o['total'] or 0) }}</strong></td>
+
+          <td>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <a class="btn" href="{{ url_for('orders_sheet', order_id=o['id']) }}" target="_blank" rel="noopener">View Sheet</a>
+              <a class="btn" href="{{ url_for('orders_sheet', order_id=o['id']) }}?dl=1">Download</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="12" style="text-align:center; padding:16px;">No orders found.</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .right { text-align: right; }
+</style>
+
+{% endblock %}

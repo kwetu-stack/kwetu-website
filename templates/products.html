@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Products · SalesPro360{% endblock %}
+{% block content %}
+
+<h1 class="h1">Products</h1>
+
+<!-- Filters -->
+<div class="card" style="margin-bottom:1rem;">
+  <form method="get" action="{{ url_for('products_list') }}" class="form-grid">
+    <div>
+      <label>Search</label>
+      <input class="input" type="text" name="q" value="{{ request.args.get('q','') }}" placeholder="Name or pack info…">
+    </div>
+    <div>
+      <label>Supplier</label>
+      <select class="input" name="supplier_id">
+        <option value="">All suppliers</option>
+        {% for s in suppliers %}
+          <option value="{{ s.id }}" {% if request.args.get('supplier_id', type=int) == s.id %}selected{% endif %}>
+            {{ s.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div style="align-self:end;">
+      <button class="btn" type="submit">Filter</button>
+      <a class="btn btn-secondary" href="{{ url_for('products_list') }}">Reset</a>
+    </div>
+  </form>
+</div>
+
+{% if is_admin %}
+<!-- Admin: Suppliers upload -->
+<div class="card" style="margin-bottom:1rem;">
+  <h3>Bulk Upload Suppliers (Admin)</h3>
+  <p>Upload a CSV with header: <code>name</code>.</p>
+  <form method="post" action="{{ url_for('suppliers_upload') }}" enctype="multipart/form-data">
+    <input class="input" type="file" name="file" accept=".csv" required>
+    <button class="btn" type="submit">Upload Suppliers CSV</button>
+    <a class="btn btn-secondary" href="{{ url_for('download_suppliers_sample') }}">Download sample</a>
+  </form>
+</div>
+
+<!-- Admin: Products upload -->
+<div class="card" style="margin-bottom:1rem;">
+  <h3>Bulk Upload Products (Admin)</h3>
+  <p>Upload CSV with headers: <code>supplier</code>, <code>product_name</code>, <code>unit_pack_info</code> (last one optional).</p>
+  <form method="post" action="{{ url_for('products_upload') }}" enctype="multipart/form-data">
+    <input class="input" type="file" name="file" accept=".csv" required>
+    <button class="btn" type="submit">Upload Products CSV</button>
+    <a class="btn btn-secondary" href="{{ url_for('download_products_sample') }}">Download sample</a>
+  </form>
+</div>
+{% endif %}
+
+<!-- Table -->
+<div class="card">
+  <div style="display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.5rem;">
+    <strong>{{ products|length }} product{{ products|length != 1 and 's' or '' }}</strong>
+  </div>
+
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width:34%;">Product</th>
+          <th style="width:16%;">Pack</th>
+          <th>Supplier</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in products %}
+        <tr>
+          <td>{{ p.product_name }}</td>
+          <td>{{ p.unit_pack_info or '' }}</td>
+          <td>{{ p.supplier_name }}</td>
+        </tr>
+        {% endfor %}
+        {% if not products %}
+        <tr><td colspan="3" style="text-align:center; opacity:.7;">No products yet.</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
