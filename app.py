@@ -13,38 +13,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # ======================= App / DB config =======================
 BASE_DIR = Path(__file__).parent
-
-def _resolve_sqlite_path():
-    """
-    Resolve SQLite file path from env (DATABASE_URL) or fallback:
-      - If DATABASE_URL=sqlite:///relative/or/file.db -> relative to BASE_DIR
-      - If DATABASE_URL=sqlite:////absolute/path.db   -> absolute path
-      - If DATABASE_URL ends with .db (plain path)    -> use as given
-      - Else fallback to /data/salespro360demo.db if /data exists, otherwise ./data/salespro360demo.db
-    """
-    env_url = (os.getenv("DATABASE_URL") or "").strip()
-    if env_url:
-        # Absolute path: sqlite:////abs/path.db
-        if env_url.startswith("sqlite:////"):
-            return env_url.replace("sqlite:////", "/")
-        # Relative path: sqlite:///relative.db
-        if env_url.startswith("sqlite:///"):
-            rel = env_url.replace("sqlite:///", "")
-            if rel.startswith("/"):
-                return rel  # treat as absolute if user supplied a leading slash
-            return str((BASE_DIR / rel).resolve())
-        # Plain filesystem path ending with .db
-        if env_url.lower().endswith(".db"):
-            return env_url
-
-    # Fallbacks
-    if os.path.exists("/data"):  # Render persistent disk
-        return "/data/salespro360demo.db"
-    data_dir = BASE_DIR / "data"
-    data_dir.mkdir(exist_ok=True)
-    return str((data_dir / "salespro360demo.db").resolve())
-
-DB_FILE = _resolve_sqlite_path()
+DB_FILE = str((BASE_DIR / "data" / "salespro360demo.db").resolve())
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-salespro360")
@@ -53,11 +22,7 @@ app.config["DATABASE"] = DB_FILE
 # ======================= DB helpers =======================
 def get_db():
     if "db" not in g:
-        # ensure parent dir exists (local)
-        try:
-            Path(app.config["DATABASE"]).parent.mkdir(parents=True, exist_ok=True)
-        except Exception:
-            pass
+        Path(app.config["DATABASE"]).parent.mkdir(parents=True, exist_ok=True)
         conn = sqlite3.connect(app.config["DATABASE"])
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA foreign_keys = ON")
@@ -81,10 +46,11 @@ def has_column(conn, table: str, column: str) -> bool:
     cols = conn.execute(f"PRAGMA table_info({table})").fetchall()
     return any(c["name"].lower() == column.lower() for c in cols)
 
-# ======================= Schema =======================
+# ======================= Schema & seed =======================
 def ensure_schema():
     """
     Creates/migrates all tables without destroying data.
+    Also seeds demo users/suppliers/products if empty.
     """
     conn = get_db()
 
@@ -108,20 +74,17 @@ def ensure_schema():
         )
     """)
 
-    # products (canonical)
+    # products (canonical + legacy 'name' column present)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS products(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             supplier_id INTEGER NOT NULL,
             product_name TEXT,
             unit_pack_info TEXT,
+            name TEXT,
             FOREIGN KEY(supplier_id) REFERENCES suppliers(id) ON DELETE CASCADE
         )
     """)
-    # legacy safety: ensure 'name' exists
-    if not has_column(conn, "products", "name"):
-        conn.execute("ALTER TABLE products ADD COLUMN name TEXT")
-
     # Soft migrations for legacy shapes
     if table_exists(conn, "products"):
         if not has_column(conn, "products", "product_name"):
@@ -136,50 +99,54 @@ def ensure_schema():
             conn.execute("ALTER TABLE products ADD COLUMN unit_pack_info TEXT")
         if not has_column(conn, "products", "supplier_id"):
             conn.execute("ALTER TABLE products ADD COLUMN supplier_id INTEGER")
+        if not has_column(conn, "products", "name"):
+            conn.execute("ALTER TABLE products ADD COLUMN name TEXT")
 
     # orders
     if not table_exists(conn, "orders"):
         conn.execute("""
             CREATE TABLE orders(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+                order_no TEXT,
                 created_at TEXT NOT NULL,
-                total REAL
+                total REAL,
+                supplier_id INTEGER,
+                product_id INTEGER,
+                quantity INTEGER,
+                unit_price REAL,
+                payment_method TEXT,
+                status TEXT DEFAULT 'Pending',
+                delivery_date TEXT,
+                currency TEXT DEFAULT 'KES',
+                notes TEXT,
+                customer_name TEXT,
+                customer_location TEXT,
+                line_items TEXT,
+                sales_rep_name TEXT
             )
         """)
-    if not has_column(conn, "orders", "created_at"):
-        conn.execute("ALTER TABLE orders ADD COLUMN created_at TEXT")
-    if not has_column(conn, "orders", "total"):
-        conn.execute("ALTER TABLE orders ADD COLUMN total REAL")
+    # safety: add columns if missing
     for col, typ in [
+        ("order_no", "TEXT"),
+        ("created_at", "TEXT"),
+        ("total", "REAL"),
         ("supplier_id", "INTEGER"),
-        ("product_id",  "INTEGER"),
-        ("quantity",    "INTEGER"),
-        ("notes",       "TEXT"),
+        ("product_id", "INTEGER"),
+        ("quantity", "INTEGER"),
+        ("unit_price", "REAL"),
+        ("payment_method", "TEXT"),
+        ("status", "TEXT"),
+        ("delivery_date", "TEXT"),
+        ("currency", "TEXT"),
+        ("notes", "TEXT"),
+        ("customer_name", "TEXT"),
+        ("customer_location", "TEXT"),
+        ("line_items", "TEXT"),
+        ("sales_rep_name", "TEXT"),
     ]:
         if not has_column(conn, "orders", col):
             conn.execute(f"ALTER TABLE orders ADD COLUMN {col} {typ}")
-
-    if not has_column(conn, "orders", "order_no"):
-        conn.execute("ALTER TABLE orders ADD COLUMN order_no TEXT")
-        conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_order_no ON orders(order_no)")
-    if not has_column(conn, "orders", "unit_price"):
-        conn.execute("ALTER TABLE orders ADD COLUMN unit_price REAL")
-    if not has_column(conn, "orders", "payment_method"):
-        conn.execute("ALTER TABLE orders ADD COLUMN payment_method TEXT")
-    if not has_column(conn, "orders", "status"):
-        conn.execute("ALTER TABLE orders ADD COLUMN status TEXT DEFAULT 'Pending'")
-    if not has_column(conn, "orders", "delivery_date"):
-        conn.execute("ALTER TABLE orders ADD COLUMN delivery_date TEXT")
-    if not has_column(conn, "orders", "currency"):
-        conn.execute("ALTER TABLE orders ADD COLUMN currency TEXT DEFAULT 'KES'")
-    if not has_column(conn, "orders", "customer_name"):
-        conn.execute("ALTER TABLE orders ADD COLUMN customer_name TEXT")
-    if not has_column(conn, "orders", "customer_location"):
-        conn.execute("ALTER TABLE orders ADD COLUMN customer_location TEXT")
-    if not has_column(conn, "orders", "line_items"):
-        conn.execute("ALTER TABLE orders ADD COLUMN line_items TEXT")
-    if not has_column(conn, "orders", "sales_rep_name"):
-        conn.execute("ALTER TABLE orders ADD COLUMN sales_rep_name TEXT")
+    conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_order_no ON orders(order_no)")
 
     # targets + actuals
     conn.execute("""
@@ -188,7 +155,8 @@ def ensure_schema():
             rep_id INTEGER NOT NULL,
             month INTEGER NOT NULL,
             year INTEGER NOT NULL,
-            target_value REAL NOT NULL
+            target_value REAL NOT NULL,
+            UNIQUE(rep_id, month, year)
         )
     """)
     conn.execute("""
@@ -197,12 +165,10 @@ def ensure_schema():
             supplier_id INTEGER NOT NULL,
             month INTEGER NOT NULL,
             year INTEGER NOT NULL,
-            target_value REAL NOT NULL
+            target_value REAL NOT NULL,
+            UNIQUE(supplier_id, month, year)
         )
     """)
-    conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_supplier_targets_unique ON supplier_targets(supplier_id, month, year)")
-    conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_rep_targets_unique ON rep_targets(rep_id, month, year)")
-
     conn.execute("""
         CREATE TABLE IF NOT EXISTS supplier_actuals(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -224,8 +190,6 @@ def ensure_schema():
         )
     """)
 
-    conn.commit()
-
     # seed users
     now_ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     if not conn.execute("SELECT 1 FROM users WHERE username='admin'").fetchone():
@@ -233,18 +197,52 @@ def ensure_schema():
             "INSERT INTO users(username, password_hash, role, created_at, full_name) VALUES (?,?,?,?,?)",
             ("admin", generate_password_hash("admin123"), "admin", now_ts, "Administrator"),
         )
-        conn.commit()
     if not conn.execute("SELECT 1 FROM users WHERE username='staff'").fetchone():
         conn.execute(
             "INSERT INTO users(username, password_hash, role, created_at, full_name) VALUES (?,?,?,?,?)",
             ("staff", generate_password_hash("staff123"), "rep", now_ts, "Staff"),
         )
-        conn.commit()
 
-# Initialize schema in hosted envs
-if os.getenv("RENDER", "").lower() == "true":
-    with app.app_context():
-        ensure_schema()
+    # seed demo suppliers/products if empty
+    s_count = conn.execute("SELECT COUNT(*) AS c FROM suppliers").fetchone()["c"]
+    p_count = conn.execute("SELECT COUNT(*) AS c FROM products").fetchone()["c"]
+    if s_count == 0 and p_count == 0:
+        demo = {
+            "Shalina Healthcare Ke Ltd": [
+                ("Kaluma King 1x18pk", ""),
+                ("Kaluma Balm 4g 1x24x24pkt", "")
+            ],
+            "Sunveat Foods": [
+                ("Funtoys Rings Tomato 30pcsx12gms", ""),
+                ("Sunveat Biscuits 12x200g", "")
+            ],
+            "Krish Commodities (Z)": [
+                ("Basmati Sunrice 5X5Kg Z", ""),
+                ("Long Grain Rice 25Kg", "")
+            ],
+            "Mombasa Millers": [
+                ("Unga Wa Dola 2Kg", ""),
+                ("Ajab Mandazi Mix 1Kg", "")
+            ],
+            "Kenafric Industries": [
+                ("Fresh Chewing Gum 100pcs", ""),
+                ("Oyo Sweets 50pcs", "")
+            ],
+        }
+        for sname, items in demo.items():
+            cur = conn.execute("INSERT INTO suppliers(name) VALUES (?)", (sname,))
+            sid = cur.lastrowid
+            for pname, up in items:
+                conn.execute(
+                    "INSERT INTO products(supplier_id, product_name, unit_pack_info, name) VALUES (?,?,?,?)",
+                    (sid, pname, up, pname),
+                )
+
+    conn.commit()
+
+# Initialize schema on import (local/demo)
+with app.app_context():
+    ensure_schema()
 
 # ======================= Auth helpers =======================
 def current_user_row():
@@ -458,15 +456,6 @@ def api_products():
 
 # ======================= Products: list & uploads =======================
 def _canon(text: str) -> str:
-    """
-    Canonicalize strings for duplicate detection.
-    - lowercase
-    - replace × with x
-    - collapse spaces
-    - remove spaces around 'x' (1 x 48 -> 1x48)
-    - normalize units: pkt/pkts -> pk, g/gm/gms -> g, kgs -> kg, mls -> ml
-    - remove spaces before trailing Z or V (e.g., '500gm Z' -> '500gmZ')
-    """
     if not text:
         return ""
     s = text.strip().lower()
@@ -537,9 +526,9 @@ def products_upload():
     """
     CSV columns accepted:
       - supplier / supplier_name
-      - product_name
-      - unit_pack_info (or 'unit'/'pack') [optional]
-    Duplicate detection is by canonicalized (product_name + unit_pack_info) within the same supplier.
+      - product_name  (may include pack text)
+      - unit_pack_info (or 'unit'/'pack')  [optional]
+    Duplicate detection by canonicalized (product_name + unit_pack_info) per supplier.
     """
     file = request.files.get("file")
     if not file or not file.filename.lower().endswith(".csv"):
@@ -562,7 +551,6 @@ def products_upload():
         return redirect(request.referrer or url_for("products_list"))
 
     conn = get_db()
-
     existing_by_supplier = {}
 
     def _load_existing(sid: int):
