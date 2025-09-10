@@ -110,25 +110,3 @@ htmlcov/
 *.gz
 *.bak
 *.old
-# Virtual env
-.venv/
-venv/
-
-# Python junk
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-
-# Local env & DBs
-.env
-.env.*
-!.env.sample
-data/*.db
-data/*.sqlite3
-*.sqlite3
-
-# OS cruft
-*.lnk
-.DS_Store
-Thumbs.db

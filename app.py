@@ -13,17 +13,51 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # ======================= App / DB config =======================
 BASE_DIR = Path(__file__).parent
-DATA_DIR = BASE_DIR / "data"
-DATA_DIR.mkdir(exist_ok=True)
-DB_PATH = DATA_DIR / "salespro360.db"
+
+def _resolve_sqlite_path():
+    """
+    Resolve SQLite file path from env (DATABASE_URL) or fallback:
+      - If DATABASE_URL=sqlite:///relative/or/file.db -> relative to BASE_DIR
+      - If DATABASE_URL=sqlite:////absolute/path.db   -> absolute path
+      - If DATABASE_URL ends with .db (plain path)    -> use as given
+      - Else fallback to /data/salespro360demo.db if /data exists, otherwise ./data/salespro360demo.db
+    """
+    env_url = (os.getenv("DATABASE_URL") or "").strip()
+    if env_url:
+        # Absolute path: sqlite:////abs/path.db
+        if env_url.startswith("sqlite:////"):
+            return env_url.replace("sqlite:////", "/")
+        # Relative path: sqlite:///relative.db
+        if env_url.startswith("sqlite:///"):
+            rel = env_url.replace("sqlite:///", "")
+            if rel.startswith("/"):
+                return rel  # treat as absolute if user supplied a leading slash
+            return str((BASE_DIR / rel).resolve())
+        # Plain filesystem path ending with .db
+        if env_url.lower().endswith(".db"):
+            return env_url
+
+    # Fallbacks
+    if os.path.exists("/data"):  # Render persistent disk
+        return "/data/salespro360demo.db"
+    data_dir = BASE_DIR / "data"
+    data_dir.mkdir(exist_ok=True)
+    return str((data_dir / "salespro360demo.db").resolve())
+
+DB_FILE = _resolve_sqlite_path()
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-salespro360")
-app.config["DATABASE"] = str(DB_PATH)
+app.config["DATABASE"] = DB_FILE
 
 # ======================= DB helpers =======================
 def get_db():
     if "db" not in g:
+        # ensure parent dir exists (local)
+        try:
+            Path(app.config["DATABASE"]).parent.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            pass
         conn = sqlite3.connect(app.config["DATABASE"])
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA foreign_keys = ON")
@@ -74,7 +108,7 @@ def ensure_schema():
         )
     """)
 
-    # products (new canonical columns)
+    # products (canonical)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS products(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -84,6 +118,9 @@ def ensure_schema():
             FOREIGN KEY(supplier_id) REFERENCES suppliers(id) ON DELETE CASCADE
         )
     """)
+    # legacy safety: ensure 'name' exists
+    if not has_column(conn, "products", "name"):
+        conn.execute("ALTER TABLE products ADD COLUMN name TEXT")
 
     # Soft migrations for legacy shapes
     if table_exists(conn, "products"):
@@ -442,7 +479,6 @@ def _canon(text: str) -> str:
     s = s.replace(" kgs", " kg").replace("kgs", "kg")
     s = s.replace(" mls", " ml").replace("mls", "ml")
     s = s.replace("  ", " ")
-    # remove space before a single-letter suffix like Z or V
     if s.endswith(" z"):
         s = s[:-2] + "z"
     if s.endswith(" v"):
@@ -450,7 +486,6 @@ def _canon(text: str) -> str:
     return s
 
 def _canon_pair(prod_name: str, pack: str) -> str:
-    # If pack is empty but prod_name already includes it, we still compare the whole string.
     merged = f"{prod_name or ''} {pack or ''}".strip()
     return _canon(merged)
 
@@ -502,8 +537,8 @@ def products_upload():
     """
     CSV columns accepted:
       - supplier / supplier_name
-      - product_name  (may already include pack text, that's fine)
-      - unit_pack_info (or 'unit'/'pack')  [optional]
+      - product_name
+      - unit_pack_info (or 'unit'/'pack') [optional]
     Duplicate detection is by canonicalized (product_name + unit_pack_info) within the same supplier.
     """
     file = request.files.get("file")
@@ -528,7 +563,6 @@ def products_upload():
 
     conn = get_db()
 
-    # Cache existing canonical pairs per supplier to avoid duplicate inserts
     existing_by_supplier = {}
 
     def _load_existing(sid: int):
@@ -561,7 +595,6 @@ def products_upload():
             skipped += 1
             continue
 
-        # Legacy safety: mirror into legacy NOT NULL 'name' column if present
         has_legacy_name = has_column(conn, "products", "name")
         cols = ["supplier_id", "product_name", "unit_pack_info"]
         vals = [sid, product_name, (unit_pack or None)]
@@ -790,7 +823,7 @@ def orders_sheet(order_id):
         if pid:
             pr = conn.execute(
                 "SELECT COALESCE(product_name, name, '') AS pname, COALESCE(unit_pack_info,'') AS up FROM products WHERE id=?",
-                (pid,)
+                (pid,),
             ).fetchone()
             if pr:
                 up = pr["up"] or ""
