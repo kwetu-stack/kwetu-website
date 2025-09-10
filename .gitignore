@@ -110,3 +110,5 @@ htmlcov/
 *.gz
 *.bak
 *.old
+data/
+*.db
