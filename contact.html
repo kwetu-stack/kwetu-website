@@ -14,17 +14,62 @@
     .mobile-menu{position:fixed;left:0;right:0;top:calc(var(--nav-h,64px));z-index:90;max-height:calc(100vh - var(--nav-h,64px));overflow:auto;transform:translateY(-8px);opacity:0;visibility:hidden;transition:transform .2s,opacity .2s,visibility .2s}
     .mobile-menu.is-open{transform:none;opacity:1;visibility:visible}
     .mobile-menu[hidden]{display:none!important}
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(90deg, #003366, #004080);
+      color: #fff;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+    .stats .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .stat {
+      flex: 1 1 200px;
+    }
+    .stat h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+      color: #fff;
+    }
+    .stat p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(90deg, #5a3ef4, #7b5af7);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .cta .btn--light {
+      background: #fff;
+      color: #5a3ef4;
+      border: none;
+    }
   </style>
 </head>
 <body>
   <header class="nav">
     <div class="container nav__inner">
-      <a class="brand" href="index.html"><img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/><span class="brand__name">Kwetu Partners Ltd</span></a>
+      <a class="brand" href="index.html">
+        <img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/>
+        <span class="brand__name">Kwetu Partners Ltd</span>
+      </a>
       <nav class="menu">
         <a href="our products.html">Solutions</a>
         <a href="about us.html">About Us</a>
         <a href="index.html#pricing">Pricing</a>
-        <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
+        <a href="contact.html" class="btn btn--sm btn--outline active">Contact</a>
         <a href="#book" class="btn btn--sm">Book a Demo</a>
       </nav>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
@@ -38,6 +83,7 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__copy">
@@ -45,11 +91,14 @@
         <p>Book a live demo and see how our software fits your business today.</p>
         <div class="trust"><span>WhatsApp</span><span>Call</span><span>Email</span></div>
       </div>
-      <div class="hero__art"><img src="customer care.png.jpg" alt="Customer support illustration"/></div>
+      <div class="hero__art">
+        <img src="customer care.png.jpg" alt="Customer support illustration"/>
+      </div>
     </div>
     <div class="hero__wave" aria-hidden="true"></div>
   </section>
 
+  <!-- Direct Contacts -->
   <section class="section" id="book">
     <div class="container">
       <h2>Direct Contacts</h2>
@@ -74,6 +123,7 @@
     </div>
   </section>
 
+  <!-- Demo Form -->
   <section class="section section--alt">
     <div class="container">
       <h2>Request a Demo</h2>
@@ -101,6 +151,26 @@
     </div>
   </section>
 
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stat"><h3 id="stat1">0+</h3><p>Projects</p></div>
+      <div class="stat"><h3 id="stat2">0+</h3><p>Clients</p></div>
+      <div class="stat"><h3 id="stat3">0+</h3><p>Specialists</p></div>
+      <div class="stat"><h3 id="stat4">0+</h3><p>Awards</p></div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <h3>Ready to modernize your business?</h3>
+      <p>Book a demo or talk to our experts today.</p>
+      <a href="#book" class="btn btn--lg btn--light">Book a Demo</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
       <p class="slogan">Name it — We code it.</p>
@@ -110,6 +180,8 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Logic
     (function(){
       const header=document.querySelector('.nav'), btn=document.querySelector('.hamburger'), menu=document.getElementById('mobileMenu');
       if(!header||!btn||!menu) return;
@@ -121,6 +193,23 @@
       window.addEventListener('keydown',(e)=>{if(e.key==='Escape')openMenu(false);});
       document.addEventListener('click',(e)=>{if(!menu.classList.contains('is-open'))return; if(!(menu.contains(e.target)||btn.contains(e.target)))openMenu(false);});
     })();
+
+    // Animated Stats
+    const stats = [
+      { id: "stat1", target: 250 },
+      { id: "stat2", target: 100 },
+      { id: "stat3", target: 25 },
+      { id: "stat4", target: 10 }
+    ];
+    stats.forEach(stat => {
+      let count = 0;
+      const el = document.getElementById(stat.id);
+      const interval = setInterval(() => {
+        count++;
+        el.textContent = count + "+";
+        if (count >= stat.target) clearInterval(interval);
+      }, 20);
+    });
   </script>
 </body>
 </html>

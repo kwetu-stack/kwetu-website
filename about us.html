@@ -14,9 +14,65 @@
     .mobile-menu{position:fixed;left:0;right:0;top:calc(var(--nav-h,64px));z-index:90;max-height:calc(100vh - var(--nav-h,64px));overflow:auto;transform:translateY(-8px);opacity:0;visibility:hidden;transition:transform .2s,opacity .2s,visibility .2s}
     .mobile-menu.is-open{transform:none;opacity:1;visibility:visible}
     .mobile-menu[hidden]{display:none!important}
+
+    /* Stats Section (Blue background, white text like index) */
+    .stats {
+      background: linear-gradient(90deg, #003366, #00509E);
+      color: #fff;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+    .stats .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .stat {
+      flex: 1 1 200px;
+    }
+    .stat h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+      color: #fff;
+    }
+    .stat p {
+      font-size: 1rem;
+      opacity: 0.9;
+      color: #fff;
+    }
+
+    /* CTA Section (same as index) */
+    .cta {
+      background: linear-gradient(90deg, #5a3ef4, #7b5af7);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .cta .btn--light {
+      background: #fff;
+      color: #5a3ef4;
+      border: none;
+    }
+
+    /* Footer - white background */
+    .footer {
+      background: #fff;
+      color: #000;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .footer p {
+      margin: .3rem 0;
+    }
   </style>
 </head>
+
 <body>
+  <!-- Header -->
   <header class="nav">
     <div class="container nav__inner">
       <a class="brand" href="index.html"><img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/><span class="brand__name">Kwetu Partners Ltd</span></a>
@@ -38,11 +94,12 @@
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__copy">
         <h1>We build software that scales with you.</h1>
-        <p>Kwetu Partners is a product-first IT company focused on practical, high-impact systems for African businesses. Our 10+product suite helps you run operations, see insights, and grow confidently.</p>
+        <p>Kwetu Partners is a product-first IT company focused on practical, high-impact systems for African businesses. Our 10+ product suite helps you run operations, see insights, and grow confidently.</p>
         <div class="hero__cta">
           <a href="our products.html" class="btn btn--lg">See all Solutions</a>
           <a href="contact.html#book" class="btn btn--lg btn--outline">Book a Demo</a>
@@ -53,6 +110,7 @@
     <div class="hero__wave" aria-hidden="true"></div>
   </section>
 
+  <!-- Mission -->
   <section class="section">
     <div class="container">
       <h2>Our mission</h2>
@@ -65,6 +123,7 @@
     </div>
   </section>
 
+  <!-- Why choose -->
   <section class="section section--alt">
     <div class="container">
       <h2>Why companies choose Kwetu Partners</h2>
@@ -75,6 +134,17 @@
     </div>
   </section>
 
+  <!-- Stats Section (Blue with white text) -->
+  <section class="stats">
+    <div class="container">
+      <div class="stat"><h3 id="stat1">0+</h3><p>Projects</p></div>
+      <div class="stat"><h3 id="stat2">0+</h3><p>Clients</p></div>
+      <div class="stat"><h3 id="stat3">0+</h3><p>Specialists</p></div>
+      <div class="stat"><h3 id="stat4">0+</h3><p>Awards</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="cta">
     <div class="container cta__inner">
       <h3>Name it — we code it.</h3>
@@ -83,6 +153,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
       <p class="slogan">Name it — We code it.</p>
@@ -92,6 +163,8 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
     (function(){
       const header=document.querySelector('.nav'), btn=document.querySelector('.hamburger'), menu=document.getElementById('mobileMenu');
       if(!header||!btn||!menu) return;
@@ -101,8 +174,25 @@
       btn.addEventListener('click',()=>openMenu(!menu.classList.contains('is-open')));
       menu.addEventListener('click',(e)=>{if(e.target.tagName.toLowerCase()==='a')openMenu(false);});
       window.addEventListener('keydown',(e)=>{if(e.key==='Escape')openMenu(false);});
-      document.addEventListener('click',(e)=>{if(!menu.classList.contains('is-open'))return; if(!(menu.contains(e.target)||btn.contains(e.target)))openMenu(false);});
+      document.addEventListener('click',(e)=>{if(!menu.classList.contains('is-open'))return;if(!(menu.contains(e.target)||btn.contains(e.target)))openMenu(false);});
     })();
+
+    // Animated stats (same as index)
+    const stats = [
+      { id: "stat1", target: 250 },
+      { id: "stat2", target: 100 },
+      { id: "stat3", target: 25 },
+      { id: "stat4", target: 10 }
+    ];
+    stats.forEach(stat => {
+      let count = 0;
+      const el = document.getElementById(stat.id);
+      const interval = setInterval(() => {
+        count++;
+        el.textContent = count + "+";
+        if (count >= stat.target) clearInterval(interval);
+      }, 20);
+    });
   </script>
 </body>
 </html>

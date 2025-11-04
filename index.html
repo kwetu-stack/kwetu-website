@@ -21,6 +21,32 @@
     }
     .mobile-menu.is-open{transform:none;opacity:1;visibility:visible}
     .mobile-menu[hidden]{display:none!important}
+
+    /* ✅ Stats Section */
+    .stats {
+      background: linear-gradient(135deg, #003366, #005b99);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      min-width: 140px;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
@@ -68,7 +94,6 @@
           <span>⚡ Fast Setup</span><span>🔒 Secure</span><span>💬 Local Support</span>
         </div>
       </div>
-      <!-- Illustration removed -->
     </div>
     <div class="hero__wave" aria-hidden="true"></div>
   </section>
@@ -92,17 +117,11 @@
           <a href="our products.html#Medi-X" class="slide"><div class="slide__icon">🏥</div><h3>Medi-X</h3><p>Patients, billing & pharmacy.</p></a>
           <a href="our products.html#QikSend-X" class="slide"><div class="slide__icon">🚚</div><h3>QikSend-X</h3><p>Orders, drivers, routes, POD.</p></a>
           <a href="our products.html#SiteManager360" class="slide"><div class="slide__icon">🏗️</div><h3>SiteManager360</h3><p>Materials, labor & budgets.</p></a>
-          <!-- ✅ Updated Juris360 link -->
           <a href="https://juris360-dzza.onrender.com" target="_blank" class="slide">
-            <div class="slide__icon">⚖️</div>
-            <h3>Juris360</h3>
-            <p>Matters, clients & billing.</p>
+            <div class="slide__icon">⚖️</div><h3>Juris360</h3><p>Matters, clients & billing.</p>
           </a>
-          <!-- ✅ New: Digibook-X live demo -->
           <a href="https://digibook-x-1.onrender.com" target="_blank" class="slide">
-            <div class="slide__icon">🛂</div>
-            <h3>Digibook-X</h3>
-            <p>Digital Visitors Book (VMS).</p>
+            <div class="slide__icon">🛂</div><h3>Digibook-X</h3><p>Digital Visitors Book (VMS).</p>
           </a>
           <a href="our products.html#GreenMind-X" class="slide"><div class="slide__icon">🌾</div><h3>GreenMind-X</h3><p>Inputs, harvests & sales.</p></a>
           <a href="our products.html#SalesPro360" class="slide"><div class="slide__icon">📈</div><h3>SalesPro360</h3><p>Leads, pipelines, targets.</p></a>
@@ -121,6 +140,26 @@
         <li>Real Estate</li><li>Healthcare</li><li>Courier &amp; Logistics</li>
         <li>Construction</li><li>Agriculture</li><li>Legal</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ✅ Stats Section -->
+  <section class="stats">
+    <div class="stat-item">
+      <span class="stat-number" data-target="250">0</span>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="100">0</span>
+      <div class="stat-label">Clients</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="25">0</span>
+      <div class="stat-label">Specialists</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="10">0</span>
+      <div class="stat-label">Awards</div>
     </div>
   </section>
 
@@ -167,6 +206,32 @@
   <!-- Scripts -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ✅ Animated Stats Counter
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 80; // smaller = faster
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          counters.forEach(counter => {
+            const updateCount = () => {
+              const target = +counter.getAttribute('data-target');
+              const count = +counter.innerText;
+              const increment = Math.ceil(target / speed);
+              if (count < target) {
+                counter.innerText = count + increment;
+                setTimeout(updateCount, 40);
+              } else {
+                counter.innerText = target + '+';
+              }
+            };
+            updateCount();
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(document.querySelector('.stats'));
 
     // Mobile menu (robust)
     (function(){
