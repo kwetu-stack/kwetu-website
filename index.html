@@ -10,17 +10,23 @@
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Mobile menu fix pack (page-scoped) */
-    .nav{z-index:100}
-    .hamburger{position:relative;z-index:110}
-    .mobile-menu{
-      position:fixed;left:0;right:0;top:calc(var(--nav-h,64px));z-index:90;
-      max-height:calc(100vh - var(--nav-h,64px));overflow:auto;
-      transform:translateY(-8px);opacity:0;visibility:hidden;
-      transition:transform .2s,opacity .2s,visibility .2s;
+    .nav { z-index: 100; }
+    .hamburger { position: relative; z-index: 110; }
+    .mobile-menu {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: calc(var(--nav-h, 64px));
+      z-index: 90;
+      max-height: calc(100vh - var(--nav-h, 64px));
+      overflow: auto;
+      transform: translateY(-8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform .2s, opacity .2s, visibility .2s;
     }
-    .mobile-menu.is-open{transform:none;opacity:1;visibility:visible}
-    .mobile-menu[hidden]{display:none!important}
+    .mobile-menu.is-open { transform: none; opacity: 1; visibility: visible; }
+    .mobile-menu[hidden] { display: none !important; }
 
     /* ✅ Stats Section */
     .stats {
@@ -33,9 +39,7 @@
       gap: 60px;
       flex-wrap: wrap;
     }
-    .stat-item {
-      min-width: 140px;
-    }
+    .stat-item { min-width: 140px; }
     .stat-number {
       font-size: 2.5rem;
       font-weight: 700;
@@ -43,12 +47,53 @@
       display: block;
       margin-bottom: 6px;
     }
-    .stat-label {
-      font-size: 1rem;
-      opacity: 0.9;
+    .stat-label { font-size: 1rem; opacity: 0.9; }
+
+    /* ✅ Clients Section */
+    .clients {
+      background: #f9fafb;
+      padding: 80px 20px;
+    }
+    .clients h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .clients__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .client-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 24px;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+    .client-card:hover {
+      transform: translateY(-4px);
+    }
+    .client-card h3 {
+      font-size: 1.2rem;
+      font-family: 'Poppins', sans-serif;
+      color: #003366;
+      margin-bottom: 8px;
+    }
+    .client-card p {
+      margin: 6px 0;
+      line-height: 1.4;
+    }
+    .client-card strong {
+      color: #005b99;
     }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header class="nav">
@@ -57,7 +102,6 @@
         <img src="logo.png" alt="Kwetu Partners Logo" class="brand__logo" />
         <span class="brand__name">Kwetu Partners Ltd</span>
       </a>
-
       <nav class="menu">
         <a href="our products.html">Solutions</a>
         <a href="about us.html">About Us</a>
@@ -65,12 +109,10 @@
         <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
         <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
       </nav>
-
       <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
-
     <nav id="mobileMenu" class="mobile-menu" hidden>
       <a href="our products.html">Solutions</a>
       <a href="about us.html">About Us</a>
@@ -91,7 +133,9 @@
           <a href="our products.html" class="btn btn--lg btn--outline">See all Solutions</a>
         </div>
         <div class="trust">
-          <span>⚡ Fast Setup</span><span>🔒 Secure</span><span>💬 Local Support</span>
+          <span>⚡ Fast Setup</span>
+          <span>🔒 Secure</span>
+          <span>💬 Local Support</span>
         </div>
       </div>
     </div>
@@ -117,12 +161,8 @@
           <a href="our products.html#Medi-X" class="slide"><div class="slide__icon">🏥</div><h3>Medi-X</h3><p>Patients, billing & pharmacy.</p></a>
           <a href="our products.html#QikSend-X" class="slide"><div class="slide__icon">🚚</div><h3>QikSend-X</h3><p>Orders, drivers, routes, POD.</p></a>
           <a href="our products.html#SiteManager360" class="slide"><div class="slide__icon">🏗️</div><h3>SiteManager360</h3><p>Materials, labor & budgets.</p></a>
-          <a href="https://juris360-dzza.onrender.com" target="_blank" class="slide">
-            <div class="slide__icon">⚖️</div><h3>Juris360</h3><p>Matters, clients & billing.</p>
-          </a>
-          <a href="https://digibook-x-1.onrender.com" target="_blank" class="slide">
-            <div class="slide__icon">🛂</div><h3>Digibook-X</h3><p>Digital Visitors Book (VMS).</p>
-          </a>
+          <a href="https://juris360-dzza.onrender.com" target="_blank" class="slide"><div class="slide__icon">⚖️</div><h3>Juris360</h3><p>Matters, clients & billing.</p></a>
+          <a href="https://digibook-x-1.onrender.com" target="_blank" class="slide"><div class="slide__icon">🛂</div><h3>Digibook-X</h3><p>Digital Visitors Book (VMS).</p></a>
           <a href="our products.html#GreenMind-X" class="slide"><div class="slide__icon">🌾</div><h3>GreenMind-X</h3><p>Inputs, harvests & sales.</p></a>
           <a href="our products.html#SalesPro360" class="slide"><div class="slide__icon">📈</div><h3>SalesPro360</h3><p>Leads, pipelines, targets.</p></a>
         </div>
@@ -136,14 +176,51 @@
     <div class="container">
       <h2>Industries we serve</h2>
       <ul class="chips">
-        <li>Retail &amp; Wholesale</li><li>Education</li><li>SACCOs &amp; MFIs</li>
-        <li>Real Estate</li><li>Healthcare</li><li>Courier &amp; Logistics</li>
-        <li>Construction</li><li>Agriculture</li><li>Legal</li>
+        <li>Retail &amp; Wholesale</li>
+        <li>Education</li>
+        <li>SACCOs &amp; MFIs</li>
+        <li>Real Estate</li>
+        <li>Healthcare</li>
+        <li>Courier &amp; Logistics</li>
+        <li>Construction</li>
+        <li>Agriculture</li>
+        <li>Legal</li>
       </ul>
     </div>
   </section>
 
-  <!-- ✅ Stats Section -->
+  <!-- ✅ Our Clients -->
+  <section class="clients">
+    <h2>Our Clients</h2>
+    <div class="clients__grid">
+      <div class="client-card">
+        <h3>Mzamsa Distributors Ltd</h3>
+        <p><strong>Industry:</strong> Fast Moving Consumer Goods</p>
+        <p><strong>Installed:</strong> Sales360</p>
+        <p><strong>Focus:</strong> Leads, pipelines, targets</p>
+      </div>
+      <div class="client-card">
+        <h3>Goodlife Enterprises Ltd</h3>
+        <p><strong>Industry:</strong> General Construction</p>
+        <p><strong>Installed:</strong> SiteManager360</p>
+        <p><strong>Focus:</strong> Materials, labor, budgets</p>
+      </div>
+      <div class="client-card">
+        <h3>Salim Ahmed Alamudi Ltd</h3>
+        <p><strong>Industry:</strong> Modern Trade Distribution</p>
+        <p><strong>Installed:</strong> StockFlow360</p>
+        <p><strong>Focus:</strong> Inventory management</p>
+      </div>
+      <div class="client-card">
+        <h3>Digital Club</h3>
+        <p><strong>Industry:</strong> Wines & Spirits Distribution</p>
+        <p><strong>Installed:</strong> Inventa</p>
+        <p><strong>Focus:</strong> Invoice & stock control</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
   <section class="stats">
     <div class="stat-item">
       <span class="stat-number" data-target="250">0</span>
@@ -209,7 +286,7 @@
 
     // ✅ Animated Stats Counter
     const counters = document.querySelectorAll('.stat-number');
-    const speed = 80; // smaller = faster
+    const speed = 80;
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -233,38 +310,55 @@
     }, { threshold: 0.3 });
     observer.observe(document.querySelector('.stats'));
 
-    // Mobile menu (robust)
+    // Mobile menu
     (function(){
-      const header=document.querySelector('.nav');
-      const btn=document.querySelector('.hamburger');
-      const menu=document.getElementById('mobileMenu');
-      if(!header||!btn||!menu) return;
-      function setNavHeight(){ const h=header.offsetHeight||64; document.documentElement.style.setProperty('--nav-h',h+'px'); }
-      setNavHeight(); window.addEventListener('resize',setNavHeight); window.addEventListener('scroll',setNavHeight);
-      function openMenu(on){
-        btn.classList.toggle('is-open',on);
-        btn.setAttribute('aria-expanded',on?'true':'false');
-        menu.classList.toggle('is-open',on);
-        if(on) menu.removeAttribute('hidden'); else menu.setAttribute('hidden','');
+      const header = document.querySelector('.nav');
+      const btn = document.querySelector('.hamburger');
+      const menu = document.getElementById('mobileMenu');
+      if(!header || !btn || !menu) return;
+
+      function setNavHeight() {
+        const h = header.offsetHeight || 64;
+        document.documentElement.style.setProperty('--nav-h', h + 'px');
       }
-      btn.addEventListener('click',()=>openMenu(!menu.classList.contains('is-open')));
-      menu.addEventListener('click',(e)=>{ if(e.target.tagName.toLowerCase()==='a') openMenu(false); });
-      window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') openMenu(false); });
-      document.addEventListener('click',(e)=>{ if(!menu.classList.contains('is-open'))return; if(!(menu.contains(e.target)||btn.contains(e.target))) openMenu(false); });
+
+      setNavHeight();
+      window.addEventListener('resize', setNavHeight);
+      window.addEventListener('scroll', setNavHeight);
+
+      function openMenu(on) {
+        btn.classList.toggle('is-open', on);
+        btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+        menu.classList.toggle('is-open', on);
+        if (on) menu.removeAttribute('hidden');
+        else menu.setAttribute('hidden', '');
+      }
+
+      btn.addEventListener('click', () => openMenu(!menu.classList.contains('is-open')));
+      menu.addEventListener('click', e => { if (e.target.tagName.toLowerCase() === 'a') openMenu(false); });
+      window.addEventListener('keydown', e => { if (e.key === 'Escape') openMenu(false); });
+      document.addEventListener('click', e => {
+        if (!menu.classList.contains('is-open')) return;
+        if (!(menu.contains(e.target) || btn.contains(e.target))) openMenu(false);
+      });
     })();
 
     // Carousel
     (function(){
-      const track=document.getElementById('carouselTrack');
-      const prev=document.querySelector('.carousel__nav--prev');
-      const next=document.querySelector('.carousel__nav--next');
-      if(!track||!prev||!next) return;
-      const step=300;
-      prev.addEventListener('click',()=>track.scrollBy({left:-step,behavior:'smooth'}));
-      next.addEventListener('click',()=>track.scrollBy({left: step,behavior:'smooth'}));
-      let timer=setInterval(()=>track.scrollBy({left:step,behavior:'smooth'}),3500);
-      track.addEventListener('mouseenter',()=>clearInterval(timer));
-      track.addEventListener('mouseleave',()=>{ timer=setInterval(()=>track.scrollBy({left:step,behavior:'smooth'}),3500); });
+      const track = document.getElementById('carouselTrack');
+      const prev = document.querySelector('.carousel__nav--prev');
+      const next = document.querySelector('.carousel__nav--next');
+      if (!track || !prev || !next) return;
+
+      const step = 300;
+      prev.addEventListener('click', () => track.scrollBy({ left: -step, behavior: 'smooth' }));
+      next.addEventListener('click', () => track.scrollBy({ left: step, behavior: 'smooth' }));
+
+      let timer = setInterval(() => track.scrollBy({ left: step, behavior: 'smooth' }), 3500);
+      track.addEventListener('mouseenter', () => clearInterval(timer));
+      track.addEventListener('mouseleave', () => {
+        timer = setInterval(() => track.scrollBy({ left: step, behavior: 'smooth' }), 3500);
+      });
     })();
   </script>
 </body>
