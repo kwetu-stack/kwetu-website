@@ -14,3 +14,16 @@
   width: min(720px, 92%);
   backdrop-filter: blur(2px);
 }
+/* OS Module tag */
+.module-tag {
+  display: inline-block;
+  background: #00509E;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
