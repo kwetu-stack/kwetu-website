@@ -10,7 +10,6 @@
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Base / Header styles */
     body { background: #0F0F0F; color: #FFFFFF; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
     a { color: inherit; text-decoration: none; }
     .nav { z-index: 100; }
@@ -19,7 +18,6 @@
     .mobile-menu.is-open { transform: none; opacity: 1; visibility: visible; }
     .mobile-menu[hidden] { display: none !important; }
 
-    /* Hero */
     .insights-hero { padding: 3rem 0 1.2rem; }
     .insights-hero .hero__copy p { max-width: 64ch; color: #CCCCCC; }
     .hero__cta { margin-top: 1rem; }
@@ -27,23 +25,19 @@
     .btn--outline { border: 2px solid #4F46E5; background: none; color: #4F46E5; }
     .btn:hover { opacity: .9; transform: scale(1.02); }
 
-    /* CEO Section */
     .ceo-section { text-align: center; margin: 2rem 0; }
     .ceo-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
     .ceo-section h3 { font-size: 1.6rem; margin-bottom: .8rem; color: #FFFFFF; }
     .ceo-text { max-width: 720px; margin: 0 auto; line-height: 1.6; color: #EEEEEE; }
 
-    /* Portfolio Section */
     #portfolio { padding: 3rem 1rem; }
     .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .portfolio-card { background: #1A1A1A; padding: 1.2rem; border-radius: 12px; transition: transform .3s, box-shadow .3s; }
     .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
     .portfolio-card h3 { margin-bottom: .5rem; color: #FFFFFF; }
     .portfolio-card p { color: #CCCCCC; font-size: .95rem; margin-bottom: .7rem; }
-
     .portfolio-card .features { font-weight: 500; color: #7CB7FF; }
 
-    /* Stories / Cards / Videos */
     .section--stories .grid { grid-template-columns: repeat(3, 1fr); }
     .story-meta { font-size: .9rem; color: #999999; margin-top: .4rem; }
     .excerpt { color: #BBBBBB; margin-top: .6rem; line-height: 1.5; }
@@ -229,10 +223,10 @@
           <iframe src="https://www.youtube.com/embed/1kT9RtUCtks" title="Demo 1" allowfullscreen></iframe>
         </div>
         <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo 2" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/1kT9RtUCtks" title="Demo 2" allowfullscreen></iframe>
         </div>
         <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Client story" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/1kT9RtUCtks" title="Demo 3" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -246,7 +240,7 @@
         <p class="section__lead">Short emails with practical tips, new case studies, and recent videos.</p>
       </div>
       <form action="form-handler.php" method="post" style="display:flex;gap:.6rem;align-items:center;">
-        <input type="email" name="email" placeholder="Your email" required style="padding:.6rem;border-radius:10px;border:1px solid rgba(255,255,255,.2);min-width:220px;background:#111;color:#fff;">
+        <input type="email" name="email" placeholder="Your email" required>
         <button class="btn btn--lg" type="submit">Subscribe</button>
       </form>
     </div>
@@ -260,7 +254,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     (function(){
@@ -290,6 +283,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
