@@ -10,124 +10,50 @@
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* small page-level tweaks retained from original for mobile menu */
     .nav { z-index: 100; }
     .hamburger { position: relative; z-index: 110; }
-    .mobile-menu {
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: calc(var(--nav-h, 64px));
-      z-index: 90;
-      max-height: calc(100vh - var(--nav-h, 64px));
-      overflow: auto;
-      transform: translateY(-8px);
-      opacity: 0;
-      visibility: hidden;
-      transition: transform .2s, opacity .2s, visibility .2s;
-    }
-    .mobile-menu.is-open { transform: none; opacity: 1; visibility: visible; }
     .mobile-menu[hidden] { display: none !important; }
-
-    /* ✅ Stats Section */
-    .stats {
-      background: linear-gradient(135deg, #003366, #005b99);
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px;
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-    .stat-item { min-width: 140px; }
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      display: block;
-      margin-bottom: 6px;
-    }
-    .stat-label { font-size: 1rem; opacity: 0.9; }
-
-    /* ✅ Clients Section */
-    .clients {
-      background: #f9fafb;
-      padding: 80px 20px;
-    }
-    .clients h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 40px;
-      font-family: 'Poppins', sans-serif;
-    }
-    .clients__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .client-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      padding: 24px;
-      text-align: left;
-      transition: transform 0.2s ease;
-    }
-    .client-card:hover {
-      transform: translateY(-4px);
-    }
-    .client-card h3 {
-      font-size: 1.2rem;
-      font-family: 'Poppins', sans-serif;
-      color: #003366;
-      margin-bottom: 8px;
-    }
-    .client-card p {
-      margin: 6px 0;
-      line-height: 1.4;
-    }
-    .client-card strong {
-      color: #005b99;
-    }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="nav">
-    <div class="container nav__inner">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="Kwetu Partners Logo" class="brand__logo" />
-        <span class="brand__name">Kwetu Partners Ltd</span>
-      </a>
-      <nav class="menu">
-        <a href="our products.html">Solutions</a>
-        <a href="about us.html">About Us</a>
-        <a href="#pricing">Pricing</a>
-        <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
-        <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
-      </nav>
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <nav id="mobileMenu" class="mobile-menu" hidden>
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/>
+      <span class="brand__name">Kwetu Partners Ltd</span>
+    </a>
+    <nav class="menu">
       <a href="our products.html">Solutions</a>
       <a href="about us.html">About Us</a>
-      <a href="#pricing">Pricing</a>
-      <a href="contact.html">Contact</a>
+      <a href="insights.html">Insights</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
       <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
     </nav>
-  </header>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav id="mobileMenu" class="mobile-menu" hidden>
+    <a href="our products.html">Solutions</a>
+    <a href="about us.html">About Us</a>
+    <a href="insights.html">Insights</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+  </nav>
+</header>
 
   <!-- Hero -->
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__copy">
-        <h1><h1>Business Management softwares engineered for African SMEs.</h1></h1>
-        <p><p>Deploy in days, not months. Built on 25 years of FMCG pain + Japanese efficiency principles. No bloat. No waste. Just results.</p></p>
+        <h1>Business Management softwares engineered for African SMEs.</h1>
+        <p>Deploy in days, not months. Built on 25 years of FMCG pain + Japanese efficiency principles. No bloat. No waste. Just results.</p>
         <div class="hero__cta">
           <a href="contact.html#book" class="btn btn--lg">Book a Demo</a>
           <a href="our products.html" class="btn btn--lg btn--outline">See all Solutions</a>
@@ -137,6 +63,11 @@
           <span>🔒 Secure</span>
           <span>💬 Local Support</span>
         </div>
+      </div>
+
+      <!-- placeholder artwork column (keeps layout consistent) -->
+      <div class="hero__art" aria-hidden="true">
+        <!-- If you have a hero illustration, place it here as <img src="hero.png" alt=""> -->
       </div>
     </div>
     <div class="hero__wave" aria-hidden="true"></div>
@@ -189,8 +120,7 @@
     </div>
   </section>
 
-  <!-- ✅ Our Clients -->
- <!-- ✅ Our Clients -->
+<!-- ✅ Our Clients -->
 <section class="clients">
   <h2>Our Clients</h2>
   <div class="clients__grid">
@@ -263,7 +193,7 @@
   <section id="pricing" class="cta">
     <div class="container cta__inner">
       <h3>Simple, transparent pricing.</h3>
-      <p><p>Founder-led onboarding. Transparent pricing. No hidden fees.</p></p>
+      <p>Founder-led onboarding. Transparent pricing. No hidden fees.</p>
       <a href="contact.html#book" class="btn btn--lg btn--light">Request Pricing</a>
     </div>
   </section>
@@ -281,7 +211,7 @@
         </div>
         <div class="contact__card">
           <h4>Email</h4>
-          <p>✉️ <a href="mailto:kwetudist@gmail.com">kwetudist@gmail.com</a></p>
+          <p>✉️ <a href="mailto:info@kwetupartners.net">info@kwetupartners.net</a></p>
         </div>
         <div class="contact__card">
           <h4>Website</h4>
