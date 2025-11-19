@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Insights — Kwetu Partners Ltd</title>
+  <meta name="description" content="Insights, client stories, and short videos from Kwetu Partners — real results, short reads, and practical how‑tos for African SMEs." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: #0F0F0F; color: #FFFFFF; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+    a { color: inherit; text-decoration: none; }
+    .nav { z-index: 100; }
+    .hamburger { position: relative; z-index: 110; }
+    .mobile-menu { position: fixed; left: 0; right: 0; top: calc(var(--nav-h, 64px)); z-index: 90; max-height: calc(100vh - var(--nav-h, 64px)); overflow: auto; transform: translateY(-8px); opacity: 0; visibility: hidden; transition: transform .2s, opacity .2s, visibility .2s; }
+    .mobile-menu.is-open { transform: none; opacity: 1; visibility: visible; }
+    .mobile-menu[hidden] { display: none !important; }
+
+    .insights-hero { padding: 3rem 0 1.2rem; }
+    .insights-hero .hero__copy p { max-width: 64ch; color: #CCCCCC; }
+    .hero__cta { margin-top: 1rem; }
+    .btn { display: inline-block; padding: .5rem 1rem; border-radius: 8px; font-weight: 600; transition: .2s; }
+    .btn--outline { border: 2px solid #4F46E5; background: none; color: #4F46E5; }
+    .btn:hover { opacity: .9; transform: scale(1.02); }
+
+    .ceo-section { text-align: center; margin: 2rem 0; }
+    .ceo-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
+    .ceo-section h3 { font-size: 1.6rem; margin-bottom: .8rem; color: #FFFFFF; }
+    .ceo-text { max-width: 720px; margin: 0 auto; line-height: 1.6; color: #EEEEEE; }
+
+    #portfolio { padding: 3rem 1rem; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .portfolio-card { background: #1A1A1A; padding: 1.2rem; border-radius: 12px; transition: transform .3s, box-shadow .3s; }
+    .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+    .portfolio-card h3 { margin-bottom: .5rem; color: #FFFFFF; }
+    .portfolio-card p { color: #CCCCCC; font-size: .95rem; margin-bottom: .7rem; }
+    .portfolio-card .features { font-weight: 500; color: #7CB7FF; }
+
+    .section--stories .grid { grid-template-columns: repeat(3, 1fr); }
+    .story-meta { font-size: .9rem; color: #999999; margin-top: .4rem; }
+    .excerpt { color: #BBBBBB; margin-top: .6rem; line-height: 1.5; }
+
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+    .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 12px; overflow: hidden; }
+    .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    @media (max-width: 980px) {
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .section--stories .grid { grid-template-columns: repeat(2, 1fr); }
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .portfolio-grid, .section--stories .grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+
+    .cta { background: #1A1A1A; padding: 2rem; border-radius: 16px; margin: 3rem 0; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+    .cta input[type="email"] { padding: .6rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); min-width: 220px; background: #111; color: #fff; }
+    .footer { padding: 2rem 1rem; background: #111; text-align: center; color: #888; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html">
+        <img src="logo.png" class="brand__logo" alt="Kwetu Partners Ltd Logo"/>
+        <span class="brand__name">Kwetu Partners Ltd</span>
+      </a>
+      <nav class="menu">
+        <a href="our products.html">Solutions</a>
+        <a href="about us.html">About Us</a>
+        <a href="insights.html" class="active">Insights</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
+        <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+      </nav>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav id="mobileMenu" class="mobile-menu" hidden>
+      <a href="our products.html">Solutions</a>
+      <a href="about us.html">About Us</a>
+      <a href="insights.html" class="active">Insights</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero insights-hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1>Insights, Client Stories & Short Videos</h1>
+        <p>Short, practical reads and quick videos showing how Kwetu’s OS modules deliver real results — case studies, field learnings, before/after snapshots, and short explainers you can use to run your business better.</p>
+        <div class="hero__cta">
+          <a href="#ceo" class="btn btn--lg">Meet Our CEO</a>
+          <a href="#portfolio" class="btn btn--lg btn--outline">Our Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CEO Section -->
+  <section id="ceo" class="ceo-section">
+    <img src="images 2/c.e.o.png" alt="CEO — Bundi Murithi" class="ceo-photo">
+    <h3>Message from Our CEO</h3>
+    <p class="ceo-text">
+      I’m Bundi Murithi, the CEO and founder of Kwetu Partners Ltd. With over 25 years of experience in the FMCG industry, I’ve lived through the daily struggles of sales teams and small businesses — taking orders in notebooks, sharing them through WhatsApp, stock variances, delivery inefficiencies, and the general disconnect between teams and operations.
+      <br><br>
+      When I shifted into software engineering, I made it my mission to build solutions inspired by real problems experienced in the field. My background gives me a unique advantage — I don’t just write code, I solve the pains I went through myself.
+      <br><br>
+      My vision is simple and focused: <strong>To help SMEs in Africa grow, digitize, and operate more efficiently using accessible management software.</strong>
+      <br><br>
+      Every tool we create at Kwetu Partners is purpose-driven — built to make business easier, faster, and smarter.
+    </p>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.6rem">
+        <h2>Our Portfolio</h2>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <h3>Inventa</h3>
+          <p class="features">Invoicing & Inventory</p>
+          <p>Quick invoicing, real-time stock tracking, and exportable sales reports.</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Inventa‑X</h3>
+          <p class="features">POS & Branch Inventory</p>
+          <p>Manage multi-branch operations with role-based access and analytics.</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Academix</h3>
+          <p class="features">School Management</p>
+          <p>Admissions, fees, classes, exams — all under one platform.</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Chamaflow‑X</h3>
+          <p class="features">SACCO & Microfinance</p>
+          <p>Member registry, loan processing, savings management and ledger reports.</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Medi‑X</h3>
+          <p class="features">Clinic & Pharmacy</p>
+          <p>Patient management, pharmacy stock, and billing for clinics.</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>SiteManager360</h3>
+          <p class="features">Project Management</p>
+          <p>Track material usage, labour logs, and budget for construction sites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Stories -->
+  <section id="stories" class="section section--alt section--stories">
+    <div class="container">
+      <h2>Client Stories</h2>
+      <p class="section__lead">Real projects. Short summaries. Photos and measurable outcomes.</p>
+      <div class="grid">
+        <article class="card">
+          <div style="display:flex;gap:.8rem;">
+            <img src="story-goodlife-before.jpg" alt="before" style="width:92px;height:72px;border-radius:8px;object-fit:cover">
+            <div>
+              <h3>Goodlife Enterprises — Renovations project</h3>
+              <div class="story-meta">SiteManager360 • Installed May 2025</div>
+              <p class="excerpt">Using daily materials capture and labour logs, Goodlife reduced over-ordering and finished the fit-out 18% under budget.</p>
+            </div>
+          </div>
+          <div class="mtop" style="display:flex;gap:.6rem;justify-content:flex-end">
+            <a class="btn btn--sm" href="#">View case</a>
+          </div>
+        </article>
+        <article class="card">
+          <div style="display:flex;gap:.8rem;">
+            <img src="story-mzamsa.jpg" alt="mzamsa" style="width:92px;height:72px;border-radius:8px;object-fit:cover">
+            <div>
+              <h3>Mzamsa Distributors — Trade distribution</h3>
+              <div class="story-meta">Inventa • Installed Jan 2025</div>
+              <p class="excerpt">Inventory controls and invoice templates reduced stock variance and improved invoice accuracy across 12 depots.</p>
+            </div>
+          </div>
+          <div class="mtop" style="display:flex;gap:.6rem;justify-content:flex-end">
+            <a class="btn btn--sm" href="#">View case</a>
+          </div>
+        </article>
+        <article class="card">
+          <div style="display:flex;gap:.8rem;">
+            <img src="story-tunza.jpg" alt="clinic" style="width:92px;height:72px;border-radius:8px;object-fit:cover">
+            <div>
+              <h3>TunzaHealth Clinics — Clinic management</h3>
+              <div class="story-meta">Medi‑X • Installed Aug 2024</div>
+              <p class="excerpt">Patient flow optimisation and digital pharmacy reduced patient wait times and stockouts across 5 clinics.</p>
+            </div>
+          </div>
+          <div class="mtop" style="display:flex;gap:.6rem;justify-content:flex-end">
+            <a class="btn btn--sm" href="#">View case</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Short Videos -->
+  <section id="videos" class="section">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.6rem">
+        <h2>Short Videos</h2>
+        <a href="#" class="btn btn--sm btn--outline">More videos</a>
+      </div>
+      <p class="section__lead" style="color:#CCCCCC;">Short, focused clips — demos, before/after tours, and 2–6 minute explainers.</p>
+      <div class="video-grid">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/1kT9RtUCtks" title="Demo 1" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/1kT9RtUCtks" title="Demo 2" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/1kT9RtUCtks" title="Demo 3" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter / CTA -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <div>
+        <h3>Get monthly insights</h3>
+        <p class="section__lead">Short emails with practical tips, new case studies, and recent videos.</p>
+      </div>
+      <form action="form-handler.php" method="post" style="display:flex;gap:.6rem;align-items:center;">
+        <input type="email" name="email" placeholder="Your email" required>
+        <button class="btn btn--lg" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="slogan">Name it — We code it.</p>
+      <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){
+      const header = document.querySelector('.nav');
+      const btn = document.querySelector('.hamburger');
+      const menu = document.getElementById('mobileMenu');
+      if(!header || !btn || !menu) return;
+      function setNavHeight() {
+        const h = header.offsetHeight || 64;
+        document.documentElement.style.setProperty('--nav-h', h + 'px');
+      }
+      setNavHeight();
+      window.addEventListener('resize', setNavHeight);
+      window.addEventListener('scroll', setNavHeight);
+      function openMenu(on) {
+        btn.classList.toggle('is-open', on);
+        btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+        menu.classList.toggle('is-open', on);
+        if (on) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
+      }
+      btn.addEventListener('click', () => openMenu(!menu.classList.contains('is-open')));
+      menu.addEventListener('click', e => { if (e.target.tagName.toLowerCase() === 'a') openMenu(false); });
+      window.addEventListener('keydown', e => { if (e.key === 'Escape') openMenu(false); });
+      document.addEventListener('click', e => {
+        if (!menu.classList.contains('is-open')) return;
+        if (!(menu.contains(e.target) || btn.contains(e.target))) openMenu(false);
+      });
+    })();
+  </script>
+</body>
+</html>
