@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Kwetu Partners Ltd</title>
+  <meta name="description" content="Book the Kwetu Efficiency Audit. 4-hour on-site, KES 50K, money-back if no leaks found." />
+  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400 ;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .nav{z-index:100}.hamburger{position:relative;z-index:110}
+    .mobile-menu{position:fixed;left:0;right:0;top:calc(var(--nav-h,64px));z-index:90;max-height:calc(100vh - var(--nav-h,64px));overflow:auto;transform:translateY(-8px);opacity:0;visibility:hidden;transition:transform .2s,opacity .2s,visibility .2s}
+    .mobile-menu.is-open{transform:none;opacity:1;visibility:visible}
+    .mobile-menu[hidden]{display:none!important}
+
+    /* Stats Section */
+    .stats {
+      background: linear-gradient(90deg, #003366, #004080);
+      color: #fff;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+    .stats .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .stat {
+      flex: 1 1 200px;
+    }
+    .stat h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+      color: #fff;
+    }
+    .stat p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(90deg, #5a3ef4, #7b5af7);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .cta .btn--light {
+      background: #fff;
+      color: #5a3ef4;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" class="brand__logo" alt="Kwetu Partners Logo"/>
+      <span class="brand__name">Kwetu Partners Ltd</span>
+    </a>
+    <nav class="menu">
+      <a href="our products.html">Solutions</a>
+      <a href="about us.html">About Us</a>
+      <a href="insights.html">Insights</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html" class="active btn btn--sm btn--outline">Contact</a>
+      <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+  <nav id="mobileMenu" class="mobile-menu" hidden>
+    <a href="our products.html">Solutions</a>
+    <a href="about us.html">About Us</a>
+    <a href="insights.html">Insights</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1>Book the Kwetu Efficiency Audit</h1>
+        <p>We’ll spend 4 hours on-site, map your leaks, and show you the exact OS modules that fix them—before you buy anything.</p>
+        <div class="trust"><span>4-Hour On-Site</span><span>KES 50K</span><span>Money-Back If No Leaks Found</span></div>
+      </div>
+      <div class="hero__art">
+        <img src="customer care.png.jpg" alt="Kwetu audit process illustration"/>
+      </div>
+    </div>
+    <div class="hero__wave" aria-hidden="true"></div>
+  </section>
+
+  <!-- Direct Contacts -->
+  <section class="section" id="book">
+    <div class="container">
+      <h2>Direct Contacts</h2>
+      <div class="contact">
+        <div class="contact__card">
+          <h4>Call / WhatsApp</h4>
+          <p>📞 <a href="tel:+254740337272">+254 740 337 272</a></p>
+          <p>📞 <a href="tel:+254718524470">+254 718 524 470</a></p>
+          <p>💬 <a target="_blank" href="https://wa.me/254740337272">Chat on WhatsApp</a></p>
+        </div>
+        <div class="contact__card">
+          <h4>Email</h4>
+          <p>✉️ <a href="mailto:info@kwetupartners.net">info@kwetupartners.net</a></p>
+          <p>🌐 <a href="https://kwetupartners.net">kwetupartners.net</a></p>
+        </div>
+        <div class="contact__card">
+          <h4>Office Hours</h4>
+          <p>Mon–Sat: 9:00–18:00 (EAT)</p>
+          <p>Remote demos available nationwide.</p>
+        </div>
+        <div class="contact__card">
+          <h4>Enterprise Assurance</h4>
+          <p>🔒 Hosted on DigitalOcean SA (99.9 % uptime)</p>
+          <p>📁 Source-code escrow available</p>
+          <p>🛡️ SOC 2 & GDPR aligned infrastructure</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Form -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2>Book Your Audit</h2>
+      <p class="section__lead">Tell us where it hurts. We’ll bring the scalpel.</p>
+
+      <form class="card" method="post" action="form-handler.php" style="max-width:720px;margin:auto;">
+        <div style="display:grid;gap:.8rem;grid-template-columns:1fr 1fr;">
+          <input required name="name" placeholder="Full name" style="padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;">
+          <input required name="phone" placeholder="Phone (e.g., +254 7xx)" style="padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;">
+        </div>
+        <input required type="email" name="email" placeholder="Email" style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;">
+
+        <select name="product" required style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;">
+          <option value="">Select a product…</option>
+          <option>Inventa</option><option>Inventa-X</option><option>Academix</option>
+          <option>Chamaflow-X</option><option>Renta-X</option><option>Medi-X</option>
+          <option>QikSend-X</option><option>SiteManager360</option><option>Juris360</option>
+          <option>GreenMind-X</option><option>SalesPro360</option>
+        </select>
+
+        <select name="biggest-pain" required style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;">
+          <option value="">Biggest operational pain right now…</option>
+          <option>Stock variance / lost inventory</option>
+          <option>Order-to-invoice delays</option>
+          <option>M-Pesa vs cash vs bank reconciliation</option>
+          <option>Multi-branch visibility</option>
+          <option>Manual reports every month-end</option>
+          <option>Other (explain below)</option>
+        </select>
+
+        <textarea name="message" rows="4" placeholder="Tell us about your needs…" style="margin-top:.8rem;padding:.8rem;border:1px solid #e5e7eb;border-radius:12px;width:100%;"></textarea>
+
+        <div style="margin-top:.9rem;display:flex;gap:.6rem;justify-content:flex-end;">
+          <button type="reset" class="btn btn--outline">Clear</button>
+          <button type="submit" class="btn">Book My Audit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stat"><h3 id="stat1">0+</h3><p>Hours Saved Daily</p></div>
+      <div class="stat"><h3 id="stat2">0+</h3><p>Clients Live</p></div>
+      <div class="stat"><h3 id="stat3">0+</h3><p>Day Adoption Guarantee</p></div>
+      <div class="stat"><h3 id="stat4">0+</h3><p>New Clients Per Quarter</p></div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <h3>Still unsure? Start with the audit.</h3>
+      <p>If we can’t find 3 hours of daily waste, you don’t pay. That’s the Kwetu guarantee.</p>
+      <a href="#book" class="btn btn--lg btn--light">Book My Audit</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="slogan">Name it — We code it.</p>
+      <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Logic
+    (function(){
+      const header=document.querySelector('.nav'), btn=document.querySelector('.hamburger'), menu=document.getElementById('mobileMenu');
+      if(!header||!btn||!menu) return;
+      function setNavHeight(){const h=header.offsetHeight||64;document.documentElement.style.setProperty('--nav-h',h+'px');}
+      setNavHeight();window.addEventListener('resize',setNavHeight);window.addEventListener('scroll',setNavHeight);
+      function openMenu(on){btn.classList.toggle('is-open',on);btn.setAttribute('aria-expanded',on?'true':'false');menu.classList.toggle('is-open',on);if(on)menu.removeAttribute('hidden');else menu.setAttribute('hidden','');}
+      btn.addEventListener('click',()=>openMenu(!menu.classList.contains('is-open')));
+      menu.addEventListener('click',(e)=>{if(e.target.tagName.toLowerCase()==='a')openMenu(false);});
+      window.addEventListener('keydown',(e)=>{if(e.key==='Escape')openMenu(false);});
+      document.addEventListener('click',(e)=>{if(!menu.classList.contains('is-open'))return; if(!(menu.contains(e.target)||btn.contains(e.target)))openMenu(false);});
+    })();
+
+    // Animated Stats
+    const stats = [
+      { id: "stat1", target: 3 },
+      { id: "stat2", target: 4 },
+      { id: "stat3", target: 90 },
+      { id: "stat4", target: 5 }
+    ];
+    stats.forEach(stat => {
+      let count = 0;
+      const el = document.getElementById(stat.id);
+      const interval = setInterval(() => {
+        count++;
+        el.textContent = count + "+";
+        if (count >= stat.target) clearInterval(interval);
+      }, 20);
+    });
+  </script>
+</body>
+</html>
