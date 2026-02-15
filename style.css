@@ -372,3 +372,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, .carousel__nav:focus-
   line-height: 1.7;
   max-width: 750px;
 }
+@media (max-width: 900px) {
+  .leadership-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
