@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Demo — Kwetu Partners Ltd</title>
+  <meta name="description" content="Explore live demos of Kwetu business management systems." />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .nav { z-index: 100; }
+    .hamburger { position: relative; z-index: 110; }
+    .mobile-menu[hidden] { display: none !important; }
+
+    .demo-section .container {
+      overflow-x: clip;
+    }
+
+    .demo-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .demo-card h2 {
+      margin-bottom: 10px;
+    }
+
+    .demo-card p {
+      margin-bottom: 10px;
+    }
+
+    .demo-card {
+      background: #0f1b2d;
+      border: 1px solid #1f2937;
+      border-radius: 16px;
+      padding: 24px;
+      color: #E2E8F0;
+      min-width: 0;
+    }
+
+    .demo-card h2 {
+      color: #ffffff;
+    }
+
+    .demo-card p {
+      color: #94A3B8;
+    }
+
+    .demo-card .btn {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .demo-card {
+        padding: 20px;
+      }
+
+      .demo-card .btn,
+      .demo-cta .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Header (same as other pages) -->
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" class="brand__logo" alt="Kwetu Logo"/>
+      <span class="brand__name">Kwetu Partners Ltd</span>
+    </a>
+
+    <nav class="menu">
+      <a href="our products.html">Solutions</a>
+      <a href="demo.html">Live Demo</a>
+      <a href="security.html">Security</a>
+      <a href="about us.html">About Us</a>
+      <a href="insights.html">Insights</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
+      <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+    </nav>
+
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav id="mobileMenu" class="mobile-menu" hidden>
+    <a href="our products.html">Solutions</a>
+    <a href="demo.html">Live Demo</a>
+    <a href="security.html">Security</a>
+    <a href="about us.html">About Us</a>
+    <a href="insights.html">Insights</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <h1>Your business is leaking money, data, and control.</h1>
+<p>
+  Manual systems, paper records, and guesswork are costing you more than you think.
+  These tools fix real problems affecting real businesses every day.
+</p>
+    </div>
+  </div>
+  <div class="hero__wave"></div>
+</section>
+
+<!-- Demo Section -->
+<section class="section demo-section">
+  <div class="container">
+    <div class="demo-grid">
+
+    <!-- DIGIBOOK -->
+    <div class="demo-card">
+      <h2>Digibook-X</h2>
+      <p><strong>Your visitor book is a data breach.</strong></p>
+<p>
+  Every visitor can see names and phone numbers of previous guests.
+  This violates basic data privacy principles and exposes your business to serious risk.
+</p>
+      <a href="https://web-production-a9533.up.railway.app" target="_blank" class="btn btn--sm">
+        Launch Live Demo
+      </a>
+    </div>
+
+    <!-- SITE MANAGER -->
+    <div class="demo-card">
+      <h2>SiteManager360</h2>
+      <p><strong>You are losing money on every construction site.</strong></p>
+<p>
+  Materials disappear. Workers are underreported. Budgets are exceeded silently.
+  Without real-time tracking, you have no control over where your money is going.
+</p>
+      <a href="https://sitemanager360-production.up.railway.app" target="_blank" class="btn btn--sm">
+        Launch Live Demo
+      </a>
+    </div>
+
+    <!-- CBC -->
+    <div class="demo-card">
+      <h2>CBC Connect</h2>
+      <p><strong>CBC reporting is slowing your school down.</strong></p>
+<p>
+  Teachers spend hours filling reports instead of teaching.
+  Data is inconsistent, delayed, and difficult to track across classes.
+</p>
+      <a href="https://cbc-connect-production.up.railway.app" target="_blank" class="btn btn--sm">
+        Launch Live Demo
+      </a>
+    </div>
+
+    <!-- IDENTITY -->
+    <div class="demo-card">
+      <h2>Kwetu Identity Control</h2>
+      <p><strong>Your facility has no real access control.</strong></p>
+<p>
+  Anyone can enter without proper tracking.
+  There is no audit trail, no accountability, and no way to verify identity in real time.
+</p>
+      <a href="https://identity-control-system-production.up.railway.app/login" target="_blank" class="btn btn--sm">
+        Launch Live Demo
+      </a>
+    </div>
+
+    </div>
+  </div>
+</section>
+<section class="section demo-cta">
+  <div class="container center">
+
+    <h2>Still using manual systems?</h2>
+    <p>
+      Every day you delay, you lose time, money, and control.
+      Let us show you exactly how to fix it.
+    </p>
+
+    <br>
+
+    <a href="contact.html#book" class="btn btn--lg">
+      Book a Live Demo
+    </a>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="slogan">Name it — We code it.</p>
+    <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    const header = document.querySelector('.nav');
+    const btn = document.querySelector('.hamburger');
+    const menu = document.getElementById('mobileMenu');
+    if(!header || !btn || !menu) return;
+
+    function setNavHeight() {
+      const h = header.offsetHeight || 64;
+      document.documentElement.style.setProperty('--nav-h', h + 'px');
+    }
+
+    setNavHeight();
+    window.addEventListener('resize', setNavHeight);
+    window.addEventListener('scroll', setNavHeight);
+
+    function openMenu(on) {
+      btn.classList.toggle('is-open', on);
+      btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      menu.classList.toggle('is-open', on);
+      if (on) menu.removeAttribute('hidden');
+      else menu.setAttribute('hidden', '');
+    }
+
+    btn.addEventListener('click', () => openMenu(!menu.classList.contains('is-open')));
+    menu.addEventListener('click', e => { if (e.target.tagName.toLowerCase() === 'a') openMenu(false); });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') openMenu(false); });
+    document.addEventListener('click', e => {
+      if (!menu.classList.contains('is-open')) return;
+      if (!(menu.contains(e.target) || btn.contains(e.target))) openMenu(false);
+    });
+  })();
+</script>
+
+</body>
+</html>
