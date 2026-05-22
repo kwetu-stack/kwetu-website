@@ -4,73 +4,320 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Insights — Kwetu Partners Ltd</title>
-  <meta name="description" content="Insights, client stories, and short videos from Kwetu Partners — real results, short reads, and practical how‑tos for African SMEs." />
+
+  <meta name="description"
+    content="Operational insights, workflow transformation thinking, and practical systems engineering observations from Kwetu Partners Ltd." />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
+
   <style>
-    body { background: #0F0F0F; color: #FFFFFF; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
-    a { color: inherit; text-decoration: none; }
-    .nav { z-index: 100; }
-    .hamburger { position: relative; z-index: 110; }
-    .mobile-menu { position: fixed; left: 0; right: 0; top: calc(var(--nav-h, 64px)); z-index: 90; max-height: calc(100vh - var(--nav-h, 64px)); overflow: auto; transform: translateY(-8px); opacity: 0; visibility: hidden; transition: transform .2s, opacity .2s, visibility .2s; }
-    .mobile-menu.is-open { transform: none; opacity: 1; visibility: visible; }
-    .mobile-menu[hidden] { display: none !important; }
 
-    .insights-hero { padding: 3rem 0 1.2rem; }
-    .insights-hero .hero__copy p { max-width: 64ch; color: #CCCCCC; }
-    .hero__cta { margin-top: 1rem; }
-    .btn { display: inline-block; padding: .5rem 1rem; border-radius: 8px; font-weight: 600; transition: .2s; }
-    .btn--outline { border: 2px solid #4F46E5; background: none; color: #4F46E5; }
-    .btn:hover { opacity: .9; transform: scale(1.02); }
+    body {
+      background: #0F0F0F;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-    .ceo-section { text-align: center; margin: 2rem 0; }
-    .ceo-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
-    .ceo-section h3 { font-size: 1.6rem; margin-bottom: .8rem; color: #FFFFFF; }
-    .ceo-text { max-width: 720px; margin: 0 auto; line-height: 1.6; color: #EEEEEE; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    #portfolio { padding: 3rem 1rem; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .portfolio-card { background: #1A1A1A; padding: 1.2rem; border-radius: 12px; transition: transform .3s, box-shadow .3s; }
-    .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
-    .portfolio-card h3 { margin-bottom: .5rem; color: #FFFFFF; }
-    .portfolio-card p { color: #CCCCCC; font-size: .95rem; margin-bottom: .7rem; }
-    .portfolio-card .features { font-weight: 500; color: #7CB7FF; }
+    .nav {
+      z-index: 100;
+    }
 
-    .section--stories .grid { grid-template-columns: repeat(3, 1fr); }
-    .story-meta { font-size: .9rem; color: #999999; margin-top: .4rem; }
-    .excerpt { color: #BBBBBB; margin-top: .6rem; line-height: 1.5; }
+    .hamburger {
+      position: relative;
+      z-index: 110;
+    }
 
-    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
-    .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 12px; overflow: hidden; }
-    .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .mobile-menu {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: calc(var(--nav-h, 64px));
+      z-index: 90;
+      max-height: calc(100vh - var(--nav-h, 64px));
+      overflow: auto;
+      transform: translateY(-8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform .2s, opacity .2s, visibility .2s;
+    }
+
+    .mobile-menu.is-open {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu[hidden] {
+      display: none !important;
+    }
+
+    .insights-hero {
+      padding: 3rem 0 1.2rem;
+    }
+
+    .insights-hero .hero__copy p {
+      max-width: 64ch;
+      color: #CCCCCC;
+    }
+
+    .hero__cta {
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: .2s;
+      cursor: pointer;
+    }
+
+    .btn--outline {
+      border: 2px solid #4F46E5;
+      background: none;
+      color: #4F46E5;
+    }
+
+    .btn:hover {
+      opacity: .9;
+      transform: scale(1.02);
+    }
+
+    .ceo-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .ceo-text {
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.7;
+      color: #EEEEEE;
+    }
+
+    #portfolio {
+      padding: 3rem 1rem;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .portfolio-card {
+      background: #1A1A1A;
+      padding: 1.2rem;
+      border-radius: 12px;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .portfolio-card h3 {
+      margin-bottom: .5rem;
+      color: #FFFFFF;
+    }
+
+    .portfolio-card p {
+      color: #CCCCCC;
+      font-size: .95rem;
+      margin-bottom: .7rem;
+    }
+
+    .portfolio-card .features {
+      font-weight: 500;
+      color: #7CB7FF;
+    }
+
+    /* NEW INSIGHTS SECTION */
+
+    .insights-section {
+      padding: 4rem 1rem;
+      background: #121212;
+    }
+
+    .insights-header {
+      margin-bottom: 2rem;
+    }
+
+    .insights-header h2 {
+      font-size: 2rem;
+      margin-bottom: .6rem;
+    }
+
+    .insights-header p {
+      color: #BBBBBB;
+      max-width: 760px;
+      line-height: 1.7;
+    }
+
+    .insight-card {
+      background: #1A1A1A;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: .3s;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .insight-card:hover {
+      border-color: rgba(124,183,255,.25);
+      transform: translateY(-3px);
+    }
+
+    .insight-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: .8rem;
+      color: #7CB7FF;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+
+    .insight-card h3 {
+      margin-bottom: .8rem;
+      font-size: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .insight-preview {
+      color: #CCCCCC;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .full-insight {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #DDDDDD;
+      line-height: 1.9;
+    }
+
+    .full-insight.show {
+      display: block;
+    }
+
+    .read-btn {
+      background: #1d4ed8;
+      border: none;
+      color: white;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .read-btn:hover {
+      opacity: .9;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .cta {
+      background: #1A1A1A;
+      padding: 2rem;
+      border-radius: 16px;
+      margin: 3rem 0;
+    }
+
+    .footer {
+      padding: 2rem 1rem;
+      background: #111;
+      text-align: center;
+      color: #888;
+    }
 
     @media (max-width: 980px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .section--stories .grid { grid-template-columns: repeat(2, 1fr); }
-      .video-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
-      .portfolio-grid, .section--stories .grid { grid-template-columns: 1fr; }
-      .video-grid { grid-template-columns: 1fr; }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     }
 
-    .cta { background: #1A1A1A; padding: 2rem; border-radius: 16px; margin: 3rem 0; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
-    .cta input[type="email"] { padding: .6rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); min-width: 220px; background: #111; color: #fff; }
-    .footer { padding: 2rem 1rem; background: #111; text-align: center; color: #888; }
+    @media (max-width: 640px) {
+
+      .portfolio-grid,
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .insight-card h3 {
+        font-size: 1.25rem;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
-  <!-- Header -->
+
+  <!-- HEADER -->
+
   <header class="nav">
+
     <div class="container nav__inner">
+
       <a class="brand" href="index.html">
         <img src="logo.png" class="brand__logo" alt="Kwetu Partners Ltd Logo"/>
         <span class="brand__name">Kwetu Partners Ltd</span>
       </a>
+
       <nav class="menu">
         <a href="our products.html">Solutions</a>
+        <a href="demo.html">Live Demo</a>
         <a href="security.html">Security</a>
         <a href="about us.html">About Us</a>
         <a href="insights.html" class="active">Insights</a>
@@ -78,301 +325,491 @@
         <a href="contact.html" class="btn btn--sm btn--outline">Contact</a>
         <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
       </nav>
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+
+      <button class="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
+
     </div>
-    <nav id="mobileMenu" class="mobile-menu" hidden>
-      <a href="our products.html">Solutions</a>
-      <a href="security.html">Security</a>
-      <a href="about us.html">About Us</a>
-      <a href="insights.html" class="active">Insights</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="contact.html">Contact</a>
-      <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
-    </nav>
+
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
+
   <section class="hero insights-hero">
+
     <div class="container hero__inner">
+
       <div class="hero__copy">
-        <h1>Insights, Client Stories & Short Videos</h1>
-        <p>Short, practical reads and quick videos showing how Kwetu’s OS modules deliver real results — case studies, field learnings, before/after snapshots, and short explainers you can use to run your business better.</p>
+
+        <h1>Operational Insights & Systems Thinking</h1>
+
+        <p>
+          Practical observations, operational transformation lessons,
+          workflow insights, and real-world systems thinking drawn from
+          African SME and institutional environments.
+        </p>
+
         <div class="hero__cta">
-          <a href="#ceo" class="btn btn--lg">Meet Our CEO</a>
-          <a href="#portfolio" class="btn btn--lg btn--outline">Our Portfolio</a>
+          <a href="#insights-archive" class="btn btn--lg">
+            Read Insights
+          </a>
+
+          <a href="#portfolio" class="btn btn--lg btn--outline">
+            Our Portfolio
+          </a>
         </div>
+
       </div>
+
     </div>
+
   </section>
 
- <!-- Leadership Section -->
-<section id="ceo" style="margin: 2rem 0;">
-  <div style="
+  <!-- LEADERSHIP -->
+
+  <section id="ceo" style="margin: 2rem 0;">
+
+    <div style="
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: start;
-  " class="leadership-grid">
+    " class="leadership-grid">
 
-    <!-- LEFT COLUMN — CEO -->
-  <div style="text-align: center;">
+      <div style="text-align:center;">
 
-    <img src="images 2/c.e.o.png" alt="CEO — Bundi Murithi" class="ceo-photo">
+        <img src="images 2/c.e.o.png"
+             alt="CEO"
+             class="ceo-photo">
 
-    <h3>Message from Our Founder</h3>
+        <h3>Message from Our Founder</h3>
 
-    <p class="ceo-text">
+        <p class="ceo-text">
 
-      I’m Bundi Murithi, founder of Kwetu Partners Ltd.
+          I’m Bundi Murithi, founder of Kwetu Partners Ltd.
 
-      <br><br>
+          <br><br>
 
-      Before transitioning into software engineering, I spent over 25 years working across FMCG operations in sales, marketing, distribution, and business strategy. During that time, I witnessed how many African SMEs lose productivity and revenue through hidden operational inefficiencies inside everyday workflows.
+          Before transitioning into software engineering, I spent over 25 years
+          working across FMCG operations in sales, marketing, distribution,
+          and business strategy.
 
-      <br><br>
+          <br><br>
 
-      Manual order-taking, fragmented communication, delayed reporting, stock variances, delivery coordination challenges, and disconnected operational processes are still common realities across many organizations.
+          Over time, I observed how many organizations quietly lose productivity,
+          visibility, accountability, and operational discipline through
+          fragmented workflows and hidden inefficiencies.
 
-      <br><br>
+          <br><br>
 
-      Over time, I became increasingly interested in how operational systems thinking, Kaizen principles, workflow discipline, and practical digitization could help businesses operate more efficiently and sustainably.
+          Kwetu Partners was created from the belief that African SMEs and
+          institutions deserve practical operational systems designed around
+          real environments and real operational challenges.
 
-      <br><br>
+        </p>
 
-      That journey eventually led me into software engineering — not simply to build applications, but to build practical operational systems inspired by real business environments and real operational challenges.
-
-      <br><br>
-
-      Today, Kwetu Partners exists to help African SMEs and institutions reduce operational waste, simplify workflows, improve visibility, and transition sustainably into digital operations.
-
-    </p>
-
-  </div>
-
-  <!-- RIGHT COLUMN — SOFTWARE DEVELOPMENT DIRECTOR -->
-  <div style="text-align: center;">
-
-    <img src="images 2/Fai.jpg" alt="Software Development Director" class="ceo-photo">
-
-    <h3>Message from Our Software Development Director</h3>
-
-    <p class="ceo-text">
-
-      I am F.B.N, Software Development Director at Kwetu Partners Ltd.
-
-      <br><br>
-
-      My responsibility is to ensure that every operational system we build is architecturally sound, scalable, secure, and aligned with practical business workflows.
-
-      <br><br>
-
-      At Kwetu, we approach software engineering as long-term operational infrastructure — not temporary digital products.
-
-      <br><br>
-
-      From backend architecture and database design to workflow optimisation and usability, our focus is reliability, operational clarity, maintainability, and continuous improvement.
-
-      <br><br>
-
-      We believe operational systems should simplify business processes, strengthen accountability, and support sustainable growth across organizations of all sizes.
-
-    </p>
-
-  </div>
-
-</div>
-</section>
-
-
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="section">
-    <div class="container">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.6rem">
-        <h2>Our Portfolio</h2>
       </div>
+
+      <div style="text-align:center;">
+
+        <img src="images 2/Fai.jpg"
+             alt="Software Director"
+             class="ceo-photo">
+         <p class="ceo-text">
+
+          F.B.N.
+
+          <br><br>     
+
+        <h3>Message from Our Software Development Director</h3>
+
+        <p class="ceo-text">
+
+          At Kwetu, software engineering is approached as operational
+          infrastructure — not temporary digital products.
+
+          <br><br>
+
+          Our focus is reliability, workflow clarity, maintainability,
+          operational visibility, and long-term system sustainability.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- OPERATIONAL INSIGHTS -->
+
+  <section id="insights-archive" class="insights-section">
+
+    <div class="container">
+
+      <div class="insights-header">
+
+        <h2>Operational Insights Archive</h2>
+
+        <p>
+
+          A growing library of operational observations,
+          workflow lessons, management thinking,
+          systems engineering reflections,
+          and practical transformation insights
+          from real African business environments.
+
+        </p>
+
+      </div>
+
+      <!-- POST 1 -->
+
+      <div class="insight-card">
+
+        <div class="insight-meta">
+          <span>May 2026</span>
+          <span>Operational Transformation</span>
+        </div>
+
+        <h3>
+          Why emergency restocking usually means the workflow already failed
+        </h3>
+
+        <p class="insight-preview">
+
+          Many SMEs treat emergency restocking as normal business activity.
+          In reality, it is often a symptom of weak operational visibility,
+          inconsistent stock monitoring, and delayed reporting processes.
+
+        </p>
+
+        <button class="read-btn" onclick="toggleInsight(this)">
+          Read Full Insight
+        </button>
+
+        <div class="full-insight">
+
+          Emergency restocking usually appears dramatic and urgent,
+          but the real problem often started much earlier.
+
+          <br><br>
+
+          In many businesses, inventory visibility is weak.
+          Teams rely on assumptions instead of real operational data.
+          Stock reconciliation becomes irregular,
+          communication becomes fragmented,
+          and reorder planning becomes reactive instead of structured.
+
+          <br><br>
+
+          Over time, businesses begin operating permanently in “response mode”
+          rather than operational control mode.
+
+          <br><br>
+
+          Practical operational systems should help organizations move from:
+          panic → visibility,
+          reaction → planning,
+          confusion → accountability.
+
+        </div>
+
+      </div>
+
+      <!-- POST 2 -->
+
+      <div class="insight-card">
+
+        <div class="insight-meta">
+          <span>May 2026</span>
+          <span>Workflow Systems</span>
+        </div>
+
+        <h3>
+          Visitor books are hiding operational inefficiencies
+        </h3>
+
+        <p class="insight-preview">
+
+          Paper visitor books may appear simple and harmless,
+          but they often create fragmented records,
+          weak accountability,
+          and invisible access management risks.
+
+        </p>
+
+        <button class="read-btn" onclick="toggleInsight(this)">
+          Read Full Insight
+        </button>
+
+        <div class="full-insight">
+
+          In many organizations,
+          reception operations still depend heavily on handwritten logs.
+
+          <br><br>
+
+          The challenge is not only security.
+          It is operational visibility.
+
+          <br><br>
+
+          Paper-based visitor management creates:
+          delayed reporting,
+          missing records,
+          poor traceability,
+          and weak coordination between departments.
+
+          <br><br>
+
+          Modern operational systems should improve:
+          accountability,
+          visibility,
+          and workflow coordination —
+          not simply digitize paper.
+
+        </div>
+
+      </div>
+
+      <!-- POST 3 -->
+
+      <div class="insight-card">
+
+        <div class="insight-meta">
+          <span>May 2026</span>
+          <span>Kaizen Thinking</span>
+        </div>
+
+        <h3>
+          Operational waste is not always dramatic
+        </h3>
+
+        <p class="insight-preview">
+
+          Some of the biggest operational losses inside organizations
+          happen quietly through repeated small inefficiencies
+          teams stopped questioning long ago.
+
+        </p>
+
+        <button class="read-btn" onclick="toggleInsight(this)">
+          Read Full Insight
+        </button>
+
+        <div class="full-insight">
+
+          Operational waste does not always look catastrophic.
+
+          <br><br>
+
+          Sometimes it appears as:
+          duplicated communication,
+          scattered WhatsApp instructions,
+          unclear reporting structures,
+          manual reconciliation,
+          delayed approvals,
+          and inconsistent workflows.
+
+          <br><br>
+
+          Over time,
+          these small inefficiencies compound into major operational costs.
+
+          <br><br>
+
+          Continuous operational improvement begins by making hidden
+          inefficiencies visible.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO -->
+
+  <section id="portfolio" class="section">
+
+    <div class="container">
+
+      <h2>Our Portfolio</h2>
+
       <div class="portfolio-grid">
+
         <div class="portfolio-card">
           <h3>Inventa</h3>
-          <p class="features">Invoicing & Inventory</p>
-          <p>Quick invoicing, real-time stock tracking, and exportable sales reports.</p>
+          <p class="features">Inventory & Invoicing</p>
+          <p>Operational visibility for SMEs and retail workflows.</p>
         </div>
+
         <div class="portfolio-card">
-          <h3>Inventa‑X</h3>
-          <p class="features">POS & Branch Inventory</p>
-          <p>Manage multi-branch operations with role-based access and analytics.</p>
+          <h3>QikSend-X</h3>
+          <p class="features">Dispatch & Logistics</p>
+          <p>Delivery tracking and dispatch coordination systems.</p>
         </div>
+
         <div class="portfolio-card">
-          <h3>Academix</h3>
-          <p class="features">School Management</p>
-          <p>Admissions, fees, classes, exams — all under one platform.</p>
+          <h3>Medi-X</h3>
+          <p class="features">Clinic Operations</p>
+          <p>Patient workflows, pharmacy tracking, and reporting.</p>
         </div>
-        <div class="portfolio-card">
-          <h3>Chamaflow‑X</h3>
-          <p class="features">SACCO & Microfinance</p>
-          <p>Member registry, loan processing, savings management and ledger reports.</p>
-        </div>
-        <div class="portfolio-card">
-          <h3>Medi‑X</h3>
-          <p class="features">Clinic & Pharmacy</p>
-          <p>Patient management, pharmacy stock, and billing for clinics.</p>
-        </div>
+
         <div class="portfolio-card">
           <h3>SiteManager360</h3>
-          <p class="features">Project Management</p>
-          <p>Track material usage, labour logs, and budget for construction sites.</p>
+          <p class="features">Construction Operations</p>
+          <p>Project visibility and site coordination workflows.</p>
         </div>
+
+        <div class="portfolio-card">
+          <h3>Chamaflow-X</h3>
+          <p class="features">SACCO Operations</p>
+          <p>Member management and operational accountability.</p>
+        </div>
+
+        <div class="portfolio-card">
+          <h3>Digibook-X</h3>
+          <p class="features">Visitor Management</p>
+          <p>Access accountability and operational traceability.</p>
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Client Stories -->
-  <section id="stories" class="section section--alt section--stories">
-    <div class="container">
-      <h2>Client Stories</h2>
-      <p class="section__lead">Real projects. Short summaries. Photos and measurable outcomes.</p>
-      <div class="grid">
-        <article class="card">
-          <div style="display:flex;gap:.8rem;">
-            <img src="story-goodlife-before.jpg" alt="before" style="width:92px;height:72px;border-radius:8px;object-fit:cover">
-            <div>
-              <h3>Goodlife Enterprises — Renovations project</h3>
-              <div class="story-meta">SiteManager360 • Installed May 2025</div>
-              <p class="excerpt">Using daily materials capture and labour logs, Goodlife reduced over-ordering and finished the fit-out 18% under budget.</p>
-            </div>
-          </div>
-          <div class="mtop" style="display:flex;gap:.6rem;justify-content:flex-end">
-            <a class="btn btn--sm" href="#">View case</a>
-          </div>
-        </article>
-        <article class="card">
-          <div style="display:flex;gap:.8rem;">
-            <img src="story-mzamsa.jpg" alt="mzamsa" style="width:92px;height:72px;border-radius:8px;object-fit:cover">
-            <div>
-              <h3>Mzamsa Distributors — Trade distribution</h3>
-              <div class="story-meta">Inventa • Installed Jan 2025</div>
-              <p class="excerpt">Inventory controls and invoice templates reduced stock variance and improved invoice accuracy across 12 depots.</p>
-            </div>
-          </div>
-          <div class="mtop" style="display:flex;gap:.6rem;justify-content:flex-end">
-            <a class="btn btn--sm" href="#">View case</a>
-          </div>
-        </article>
-        <article class="card">
-          <div style="display:flex;gap:.8rem;">
-            <img src="story-tunza.jpg" alt="clinic" style="width:92px;height:72px;border-radius:8px;object-fit:cover">
-            <div>
-              <h3>TunzaHealth Clinics — Clinic management</h3>
-              <div class="story-meta">Medi‑X • Installed Aug 2024</div>
-              <p class="excerpt">Patient flow optimisation and digital pharmacy reduced patient wait times and stockouts across 5 clinics.</p>
-            </div>
-          </div>
-          <div class="mtop" style="display:flex;gap:.6rem;justify-content:flex-end">
-            <a class="btn btn--sm" href="#">View case</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+  <!-- VIDEOS -->
 
-  <!-- Short Videos -->
   <section id="videos" class="section">
+
     <div class="container">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.6rem">
-        <h2>Short Videos</h2>
-        <a href="#" class="btn btn--sm btn--outline">More videos</a>
+
+      <h2>Short Videos</h2>
+
+      <p style="color:#CCCCCC;">
+        Short explainers, demos, and operational transformation discussions.
+      </p>
+
+      <div class="video-grid">
+
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/0Xl6uy81UiY"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/eR_r4XYT6LE"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/1kT9RtUCtks"
+            allowfullscreen>
+          </iframe>
+        </div>
+
       </div>
-      <p class="section__lead" style="color:#CCCCCC;">Short, focused clips — demos, before/after tours, and 2–6 minute explainers.</p>
- <div class="video-grid">
 
-  <!-- SalesPro360 Testimonial -->
-  <div class="video-wrapper">
-    <iframe 
-      src="https://www.youtube.com/embed/0Xl6uy81UiY" 
-      title="SalesPro360 Testimonial" 
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- StockFlow360 Testimonial -->
-  <div class="video-wrapper">
-    <iframe 
-      src="https://www.youtube.com/embed/eR_r4XYT6LE" 
-      title="Stockflow360 Testimonial" 
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- Kwetu Partners Intro Video -->
-  <div class="video-wrapper">
-    <iframe 
-      src="https://www.youtube.com/embed/1kT9RtUCtks" 
-      title="Kwetu Partners" 
-      allowfullscreen>
-    </iframe>
-  </div>
-
-</div>
-
+    </div>
 
   </section>
 
-  <!-- Newsletter / CTA -->
+  <!-- NEWSLETTER -->
+
   <section class="cta">
-    <div class="container cta__inner">
-      <div>
-        <h3>Get monthly insights</h3>
-        <p class="section__lead">Short emails with practical tips, new case studies, and recent videos.</p>
-      </div>
-      <form action="form-handler.php" method="post" style="display:flex;gap:.6rem;align-items:center;">
-        <input type="email" name="email" placeholder="Your email" required>
-        <button class="btn btn--lg" type="submit">Subscribe</button>
+
+    <div class="container">
+
+      <h3>Get operational insights</h3>
+
+      <p style="color:#CCCCCC;">
+        Monthly observations, workflow lessons,
+        systems thinking, and operational transformation insights.
+      </p>
+
+      <form
+        action="form-handler.php"
+        method="post"
+        style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;">
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email"
+          required
+          style="
+            padding:.7rem;
+            border-radius:10px;
+            border:none;
+            min-width:240px;
+          ">
+
+        <button class="btn btn--lg" type="submit">
+          Subscribe
+        </button>
+
       </form>
+
     </div>
+
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
+
   <footer class="footer">
+
     <div class="container footer__inner">
-      <p class="slogan">Name it — We code it.</p>
-      <p>Powered by <strong>Kwetu Partners Ltd</strong> • © <span id="year"></span></p>
+
+      <p class="slogan">
+        Name it — We code it.
+      </p>
+
+      <p>
+        Powered by <strong>Kwetu Partners Ltd</strong>
+        • © <span id="year"></span>
+      </p>
+
     </div>
+
   </footer>
 
+  <!-- SCRIPTS -->
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    (function(){
-      const header = document.querySelector('.nav');
-      const btn = document.querySelector('.hamburger');
-      const menu = document.getElementById('mobileMenu');
-      if(!header || !btn || !menu) return;
-      function setNavHeight() {
-        const h = header.offsetHeight || 64;
-        document.documentElement.style.setProperty('--nav-h', h + 'px');
+
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+    function toggleInsight(button) {
+
+      const content =
+        button.nextElementSibling;
+
+      content.classList.toggle('show');
+
+      if(content.classList.contains('show')) {
+        button.textContent = 'Hide Insight';
+      } else {
+        button.textContent = 'Read Full Insight';
       }
-      setNavHeight();
-      window.addEventListener('resize', setNavHeight);
-      window.addEventListener('scroll', setNavHeight);
-      function openMenu(on) {
-        btn.classList.toggle('is-open', on);
-        btn.setAttribute('aria-expanded', on ? 'true' : 'false');
-        menu.classList.toggle('is-open', on);
-        if (on) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
-      }
-      btn.addEventListener('click', () => openMenu(!menu.classList.contains('is-open')));
-      menu.addEventListener('click', e => { if (e.target.tagName.toLowerCase() === 'a') openMenu(false); });
-      window.addEventListener('keydown', e => { if (e.key === 'Escape') openMenu(false); });
-      document.addEventListener('click', e => {
-        if (!menu.classList.contains('is-open')) return;
-        if (!(menu.contains(e.target) || btn.contains(e.target))) openMenu(false);
-      });
-    })();
+
+    }
+
   </script>
+
 </body>
 </html>
-
 
 
