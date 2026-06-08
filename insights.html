@@ -326,11 +326,22 @@
         <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
       </nav>
 
-      <button class="hamburger" aria-label="Open menu">
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
 
     </div>
+
+    <nav id="mobileMenu" class="mobile-menu" hidden>
+      <a href="our products.html">Solutions</a>
+      <a href="demo.html">Live Demo</a>
+      <a href="security.html">Security</a>
+      <a href="about us.html">About Us</a>
+      <a href="insights.html" class="active">Insights</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html#book" class="btn btn--sm">Book a Demo</a>
+    </nav>
 
   </header>
 
@@ -415,7 +426,7 @@
 
       <div style="text-align:center;">
 
-        <img src="images 2/Fai.jpg"
+        <img src="fbn.jpg"
              alt="Software Director"
              class="ceo-photo">
          <p class="ceo-text">
@@ -2075,6 +2086,41 @@
       }
 
     }
+
+    (function() {
+      const header = document.querySelector('.nav');
+      const button = document.querySelector('.hamburger');
+      const menu = document.getElementById('mobileMenu');
+      if (!header || !button || !menu) return;
+
+      function setNavHeight() {
+        document.documentElement.style.setProperty('--nav-h', (header.offsetHeight || 64) + 'px');
+      }
+
+      function openMenu(open) {
+        button.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.classList.toggle('is-open', open);
+        if (open) menu.removeAttribute('hidden');
+        else menu.setAttribute('hidden', '');
+      }
+
+      setNavHeight();
+      window.addEventListener('resize', setNavHeight);
+      button.addEventListener('click', () => openMenu(!menu.classList.contains('is-open')));
+      menu.addEventListener('click', event => {
+        if (event.target.closest('a')) openMenu(false);
+      });
+      window.addEventListener('keydown', event => {
+        if (event.key === 'Escape') openMenu(false);
+      });
+      document.addEventListener('click', event => {
+        if (menu.classList.contains('is-open') && !menu.contains(event.target) && !button.contains(event.target)) {
+          openMenu(false);
+        }
+      });
+    })();
 
   </script>
 
